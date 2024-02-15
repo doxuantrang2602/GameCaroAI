@@ -39,9 +39,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
-            this.pn_HuongDan.SuspendLayout();
             this.pn_Anh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Anh)).BeginInit();
             this.mnstCaro.SuspendLayout();
@@ -73,7 +71,6 @@
             // 
             this.pn_HuongDan.BorderColor = System.Drawing.Color.Black;
             this.pn_HuongDan.BorderThickness = 1;
-            this.pn_HuongDan.Controls.Add(this.guna2Button1);
             this.pn_HuongDan.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_HuongDan.Location = new System.Drawing.Point(0, 264);
             this.pn_HuongDan.Name = "pn_HuongDan";
@@ -149,22 +146,6 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 26);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Button1.BackgroundImage")));
-            this.guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Empty;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(117, 54);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(45, 47);
-            this.guna2Button1.TabIndex = 0;
-            // 
             // FrmAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -182,7 +163,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Cờ Caro";
             this.guna2GradientPanel1.ResumeLayout(false);
-            this.pn_HuongDan.ResumeLayout(false);
             this.pn_Anh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Anh)).EndInit();
             this.mnstCaro.ResumeLayout(false);
@@ -203,6 +183,5 @@
         private Guna.UI2.WinForms.Guna2PictureBox ptb_Anh;
         private Guna.UI2.WinForms.Guna2GradientPanel pn_HuongDan;
         private Guna.UI2.WinForms.Guna2GradientPanel pn_Diem;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

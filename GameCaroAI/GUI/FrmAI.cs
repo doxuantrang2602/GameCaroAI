@@ -28,7 +28,7 @@ namespace GameCaroAI.GUI
                 Location = new Point(0, 0),
                 BorderThickness = 1,
                 //BackColor = Color.White,
-                //FillColor = Color.White,
+                FillColor = Color.Transparent,
             };
             for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
             {
@@ -41,7 +41,7 @@ namespace GameCaroAI.GUI
                         Location = new Point(oldButton.Location.X + oldButton.Width, oldButton.Location.Y),
                         BorderThickness = 1,
                         //BackColor = Color.White,
-                        //FillColor = Color.White,
+                        FillColor = Color.Transparent,
                     };
                     pn_BanCo.Controls.Add(btn);
                     oldButton = btn;
