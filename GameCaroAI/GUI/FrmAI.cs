@@ -59,13 +59,13 @@ namespace GameCaroAI.GUI
             {
                 if (isXTurn)
                 {
-                    btn.Text = "X";
+                    //btn.Text = "X";
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                 }
                 else
                 {
-                    btn.Text = "O";
+                    //btn.Text = "O";
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                 }
