@@ -90,6 +90,7 @@ namespace GameCaroAI.GUI
         {
             string player = isXTurn ? "X" : "O";
 
+            // Kiểm tra hàng ngang
             for (int i = 0; i < Helpers.CHESS_BOARD_WIDTH - 4; i++)
             {
                 bool win = true;
@@ -104,6 +105,7 @@ namespace GameCaroAI.GUI
                 if (win) return true;
             }
 
+            // Kiểm tra hàng dọc
             for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT - 4; i++)
             {
                 bool win = true;
@@ -118,6 +120,7 @@ namespace GameCaroAI.GUI
                 if (win) return true;
             }
 
+            // Kiểm tra đường chéo chính
             for (int i = -4; i < 1; i++)
             {
                 bool win = true;
@@ -137,6 +140,7 @@ namespace GameCaroAI.GUI
                 if (win) return true;
             }
 
+            // Kiểm tra đường chéo phụ
             for (int i = -4; i < 1; i++)
             {
                 bool win = true;
