@@ -12,13 +12,13 @@ using Guna.UI2.WinForms;
 
 namespace GameCaroAI.GUI
 {
-    public partial class FrmAI : Form
+    public partial class Frm_TwoPlayers : Form
     {
         public bool isXTurn = true;
         public string[,] board = new string[Helpers.CHESS_BOARD_WIDTH, Helpers.CHESS_BOARD_HEIGHT];
         private Stack<Point> moveHistory = new Stack<Point>();
         private Stack<Point> undoneMoves = new Stack<Point>();
-        public FrmAI()
+        public Frm_TwoPlayers()
         {
             InitializeComponent();
             DrawChessBoard();
@@ -81,15 +81,15 @@ namespace GameCaroAI.GUI
                 if (CheckWinner(col, row))
                 {
                     MessageBox.Show((isXTurn ? "X" : "O") + " wins!");
-                    
+
                 }
                 else
                 {
                     isXTurn = !isXTurn;
                 }
-                
+
             }
-            
+
         }
 
         private bool CheckWinner(int col, int row)
