@@ -1,6 +1,8 @@
-﻿namespace GameCaroAI.GUI
+﻿using System;
+
+namespace GameCaroAI.GUI
 {
-    partial class FrmAI
+    partial class Frm_TwoPlayers
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_TwoPlayers));
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.pn_Diem = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.btn_Thoat = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -100,7 +102,6 @@
             this.btn_Thoat.Size = new System.Drawing.Size(99, 45);
             this.btn_Thoat.TabIndex = 1;
             this.btn_Thoat.Text = "Thoát";
-            this.btn_Thoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btn_Redo
             // 
@@ -283,7 +284,7 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 26);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // FrmAI
+            // Frm_TwoPlayers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -293,10 +294,9 @@
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.mnstCaro);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnstCaro;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmAI";
+            this.Name = "Frm_TwoPlayers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Cờ Caro";
             this.guna2GradientPanel1.ResumeLayout(false);

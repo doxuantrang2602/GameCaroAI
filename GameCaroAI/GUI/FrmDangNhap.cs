@@ -31,8 +31,8 @@ namespace GameCaroAI
         private void btn_haiNguoi_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FrmAI frmAI = new FrmAI();
-            frmAI.ShowDialog();
+            Frm_TwoPlayers frm_two = new Frm_TwoPlayers();
+            frm_two.ShowDialog();
             this.Show();
         }
 

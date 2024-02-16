@@ -11,3 +11,4 @@ D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CopyComplet
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.exe
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.FrmAI.resources
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_TwoPlayers.resources
