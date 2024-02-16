@@ -53,9 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DataProcesserTrang.cs" />
-    <Compile Include="Classes\ChessBoarManager.cs" />
     <Compile Include="Classes\Helpers.cs" />
-    <Compile Include="Classes\XOButton.cs" />
     <Compile Include="GUI\FrmAI.cs">
       <SubType>Form</SubType>
     </Compile>
