@@ -38,10 +38,8 @@ namespace GameCaroAI
 
         private void btn_ChoiOnl_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmAI frmAI = new FrmAI();
-            frmAI.ShowDialog();
-            this.Show();
+            MessageBox.Show("Hệ thống đang phát triển !",
+                            "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void bnt_Thoat_Click(object sender, EventArgs e)

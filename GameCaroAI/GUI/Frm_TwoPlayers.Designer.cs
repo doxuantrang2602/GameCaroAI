@@ -102,6 +102,7 @@ namespace GameCaroAI.GUI
             this.btn_Thoat.Size = new System.Drawing.Size(99, 45);
             this.btn_Thoat.TabIndex = 1;
             this.btn_Thoat.Text = "Thoát";
+            this.btn_Thoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btn_Redo
             // 
@@ -252,8 +253,9 @@ namespace GameCaroAI.GUI
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.newGameToolStripMenuItem.Text = "New game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // optionToolStripMenuItem
             // 

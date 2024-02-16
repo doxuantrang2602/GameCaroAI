@@ -196,9 +196,10 @@ namespace GameCaroAI.GUI
 
                 int col = lastMove.X;
                 int row = lastMove.Y;
-
-                // Loại bỏ nước vừa Undo khỏi bàn cờ
-                Guna2Button btn = pn_BanCo.Controls.Cast<Control>().FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && control.Location.Y / Helpers.CHESS_HEIGHT == row) as Guna2Button;
+                Guna2Button btn = pn_BanCo.Controls.Cast<Control>()
+                    .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col 
+                                    && control.Location.Y / Helpers.CHESS_HEIGHT == row) 
+                                    as Guna2Button;
                 btn.BackgroundImage = null;
                 board[col, row] = null;
             }
@@ -207,6 +208,13 @@ namespace GameCaroAI.GUI
         private void btn_Redo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmAI frmAI = new FrmAI();
+            frmAI.ShowDialog();
         }
     }
 }

@@ -16,13 +16,14 @@ namespace GameCaroAI.GUI
     {
         public bool isXTurn = true;
         public string[,] board = new string[Helpers.CHESS_BOARD_WIDTH, Helpers.CHESS_BOARD_HEIGHT];
-        private Stack<Point> moveHistory = new Stack<Point>();
+        private Stack<Point> moveHistory = new Stack<Point>(); 
         private Stack<Point> undoneMoves = new Stack<Point>();
         public Frm_TwoPlayers()
         {
             InitializeComponent();
             DrawChessBoard();
         }
+
         public void DrawChessBoard()
         {
             Guna2Button oldButton = new Guna2Button()
@@ -30,7 +31,7 @@ namespace GameCaroAI.GUI
                 Width = 0,
                 Location = new Point(0, 0),
                 BorderThickness = 1,
-                //BackColor = Color.White,
+                BackColor = Color.White,
                 FillColor = Color.Transparent,
             };
             for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
@@ -43,7 +44,7 @@ namespace GameCaroAI.GUI
                         Height = Helpers.CHESS_HEIGHT,
                         Location = new Point(oldButton.Location.X + oldButton.Width, oldButton.Location.Y),
                         BorderThickness = 1,
-                        //BackColor = Color.White,
+                        BackColor = Color.White,
                         FillColor = Color.Transparent,
                     };
                     pn_BanCo.Controls.Add(btn);
@@ -75,9 +76,8 @@ namespace GameCaroAI.GUI
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
                 }
-                moveHistory.Push(new Point(col, row));
+                moveHistory.Push(new Point(col, row)); // Thêm nước mới vào lịch sử
                 undoneMoves.Clear();
-
                 if (CheckWinner(col, row))
                 {
                     MessageBox.Show((isXTurn ? "X" : "O") + " wins!");
@@ -196,9 +196,10 @@ namespace GameCaroAI.GUI
 
                 int col = lastMove.X;
                 int row = lastMove.Y;
-
-                // Loại bỏ nước vừa Undo khỏi bàn cờ
-                Guna2Button btn = pn_BanCo.Controls.Cast<Control>().FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && control.Location.Y / Helpers.CHESS_HEIGHT == row) as Guna2Button;
+                Guna2Button btn = pn_BanCo.Controls.Cast<Control>()
+                    .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col 
+                                    && control.Location.Y / Helpers.CHESS_HEIGHT == row) 
+                    as Guna2Button;
                 btn.BackgroundImage = null;
                 board[col, row] = null;
             }
@@ -206,7 +207,42 @@ namespace GameCaroAI.GUI
 
         private void btn_Redo_Click(object sender, EventArgs e)
         {
+            if (undoneMoves.Count > 0)
+            {
+                Point redoMove = undoneMoves.Pop();
+                moveHistory.Push(redoMove);
 
+                int col = redoMove.X;
+                int row = redoMove.Y;
+
+                Guna2Button btn = pn_BanCo.Controls.Cast<Control>().FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && control.Location.Y / Helpers.CHESS_HEIGHT == row) as Guna2Button;
+                if (isXTurn)
+                {
+                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
+                    btn.BackgroundImageLayout = ImageLayout.Stretch;
+                    board[col, row] = "X";
+                }
+                else
+                {
+                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
+                    btn.BackgroundImageLayout = ImageLayout.Stretch;
+                    board[col, row] = "O";
+                }
+
+                if (CheckWinner(col, row))
+                {
+                    MessageBox.Show((isXTurn ? "X" : "O") + " wins!");                 
+                }
+                //isXTurn = !isXTurn;               
+            }
+
+        }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrmAI frmAI = new FrmAI();
+            frmAI.ShowDialog();
         }
     }
 }
