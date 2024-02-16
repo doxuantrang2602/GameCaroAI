@@ -15,6 +15,9 @@ namespace GameCaroAI.GUI
     public partial class Frm_TwoPlayers : Form
     {
         public bool isXTurn = true;
+        public bool isOTurn = true;
+        public int x = 0;
+        public int o = 0;
         public string[,] board = new string[Helpers.CHESS_BOARD_WIDTH, Helpers.CHESS_BOARD_HEIGHT];
         private Stack<Point> moveHistory = new Stack<Point>(); 
         private Stack<Point> undoneMoves = new Stack<Point>();
@@ -63,33 +66,42 @@ namespace GameCaroAI.GUI
             {
                 int row = btn.Location.Y / Helpers.CHESS_HEIGHT;
                 int col = btn.Location.X / Helpers.CHESS_WIDTH;
-
                 if (isXTurn)
                 {
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "X";
+                    x++;
+                    lbl_X.Text = "X: " + x.ToString();
+                    moveHistory.Push(new Point(col, row));
+                    undoneMoves.Clear();
+                    if (CheckWinner(col, row))
+                    {
+                        MessageBox.Show("X wins!");
+                        return;
+                    }
+                    isXTurn = false;
+                    isOTurn = true;
                 }
-                else
+                else if (isOTurn)
                 {
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
-                }
-                moveHistory.Push(new Point(col, row)); // Thêm nước mới vào lịch sử
-                undoneMoves.Clear();
-                if (CheckWinner(col, row))
-                {
-                    MessageBox.Show((isXTurn ? "X" : "O") + " wins!");
+                    o++;
+                    lbl_O.Text = "O: " + o.ToString();
 
+                    moveHistory.Push(new Point(col, row));
+                    undoneMoves.Clear();
+                    if (CheckWinner(col, row))
+                    {
+                        MessageBox.Show("O wins!");
+                        return;
+                    }
+                    isXTurn = true;
+                    isOTurn = false;
                 }
-                else
-                {
-                    isXTurn = !isXTurn;
-                }
-
             }
-
         }
 
         private bool CheckWinner(int col, int row)
@@ -172,8 +184,8 @@ namespace GameCaroAI.GUI
         private void btn_newGame_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmAI frmAI = new FrmAI();
-            frmAI.ShowDialog();
+            Frm_TwoPlayers frm_two = new Frm_TwoPlayers();
+            frm_two.ShowDialog();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -197,13 +209,27 @@ namespace GameCaroAI.GUI
                 int col = lastMove.X;
                 int row = lastMove.Y;
                 Guna2Button btn = pn_BanCo.Controls.Cast<Control>()
-                    .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col 
-                                    && control.Location.Y / Helpers.CHESS_HEIGHT == row) 
+                    .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col
+                                    && control.Location.Y / Helpers.CHESS_HEIGHT == row)
                     as Guna2Button;
                 btn.BackgroundImage = null;
+
                 board[col, row] = null;
+                if (isXTurn)
+                {
+                    x--;
+                    lbl_X.Text = "X: " + x.ToString();
+                }
+                else if (isOTurn)
+                {
+                    o--;
+                    lbl_O.Text = "O: " + o.ToString();
+                }
+                isXTurn = !isXTurn;
+                isOTurn = !isOTurn;
             }
         }
+
 
         private void btn_Redo_Click(object sender, EventArgs e)
         {
@@ -216,33 +242,39 @@ namespace GameCaroAI.GUI
                 int row = redoMove.Y;
 
                 Guna2Button btn = pn_BanCo.Controls.Cast<Control>().FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && control.Location.Y / Helpers.CHESS_HEIGHT == row) as Guna2Button;
+
                 if (isXTurn)
                 {
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "X";
+                    x++;
+                    lbl_X.Text = "X: " + x.ToString();
                 }
-                else
+                else if (isOTurn)
                 {
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
+                    o++;
+                    lbl_O.Text = "O: " + o.ToString();
                 }
 
                 if (CheckWinner(col, row))
                 {
-                    MessageBox.Show((isXTurn ? "X" : "O") + " wins!");                 
+                    MessageBox.Show((isXTurn ? "X" : "O") + " wins!");
                 }
-                isXTurn = !isXTurn;               
-            }
 
+                isXTurn = !isXTurn;
+                isOTurn = !isOTurn;
+            }
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-            FrmAI frmAI = new FrmAI();
-            frmAI.ShowDialog();
+            Frm_TwoPlayers frm_two = new Frm_TwoPlayers();
+            frm_two.ShowDialog();
         }
     }
 }
