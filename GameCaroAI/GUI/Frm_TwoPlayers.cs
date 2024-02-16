@@ -233,7 +233,7 @@ namespace GameCaroAI.GUI
                 {
                     MessageBox.Show((isXTurn ? "X" : "O") + " wins!");                 
                 }
-                //isXTurn = !isXTurn;               
+                isXTurn = !isXTurn;               
             }
 
         }
