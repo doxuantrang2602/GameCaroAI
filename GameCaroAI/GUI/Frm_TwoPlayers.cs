@@ -16,8 +16,8 @@ namespace GameCaroAI.GUI
     {
         public bool isXTurn = true;
         public bool isOTurn = true;
-        public int x = 0;
-        public int o = 0;
+        public int xCount = 0;
+        public int oCount = 0;
         public string[,] board = new string[Helpers.CHESS_BOARD_WIDTH, Helpers.CHESS_BOARD_HEIGHT];
         private Stack<Point> moveHistory = new Stack<Point>(); 
         private Stack<Point> undoneMoves = new Stack<Point>();
@@ -71,8 +71,8 @@ namespace GameCaroAI.GUI
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "X";
-                    x++;
-                    lbl_X.Text = "X: " + x.ToString();
+                    xCount++;
+                    lbl_X.Text = "X: " + xCount.ToString();
                     moveHistory.Push(new Point(col, row));
                     undoneMoves.Clear();
                     if (CheckWinner(col, row))
@@ -88,8 +88,8 @@ namespace GameCaroAI.GUI
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
-                    o++;
-                    lbl_O.Text = "O: " + o.ToString();
+                    oCount++;
+                    lbl_O.Text = "O: " + oCount.ToString();
 
                     moveHistory.Push(new Point(col, row));
                     undoneMoves.Clear();
@@ -217,13 +217,13 @@ namespace GameCaroAI.GUI
                 board[col, row] = null;
                 if (isXTurn)
                 {
-                    x--;
-                    lbl_X.Text = "X: " + x.ToString();
+                    xCount--;
+                    lbl_X.Text = "X: " + xCount.ToString();
                 }
                 else if (isOTurn)
                 {
-                    o--;
-                    lbl_O.Text = "O: " + o.ToString();
+                    oCount--;
+                    lbl_O.Text = "O: " + oCount.ToString();
                 }
                 isXTurn = !isXTurn;
                 isOTurn = !isOTurn;
@@ -248,16 +248,16 @@ namespace GameCaroAI.GUI
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "X";
-                    x++;
-                    lbl_X.Text = "X: " + x.ToString();
+                    xCount++;
+                    lbl_X.Text = "X: " + xCount.ToString();
                 }
                 else if (isOTurn)
                 {
                     btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
-                    o++;
-                    lbl_O.Text = "O: " + o.ToString();
+                    oCount++;
+                    lbl_O.Text = "O: " + oCount.ToString();
                 }
 
                 if (CheckWinner(col, row))
