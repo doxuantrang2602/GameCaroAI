@@ -1,4 +1,8 @@
-﻿namespace GameCaroAI.GUI
+﻿using GameCaroAI.Classes;
+using Guna.UI2.WinForms;
+using System.Drawing;
+
+namespace GameCaroAI.GUI
 {
     partial class FrmAI
     {
@@ -26,6 +30,41 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        /// 
+
+        public void DrawChessBoard()
+        {
+            Guna2Button oldButton = new Guna2Button()
+            {
+                Width = 0,
+                Location = new Point(0, 0),
+                BorderThickness = 1,
+                BackColor = Color.White,
+                FillColor = Color.Transparent,
+            };
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            {
+                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
+                {
+                    Guna2Button btn = new Guna2Button()
+                    {
+                        Width = Helpers.CHESS_WIDTH,
+                        Height = Helpers.CHESS_HEIGHT,
+                        Location = new Point(oldButton.Location.X + oldButton.Width, oldButton.Location.Y),
+                        BorderThickness = 1,
+                        BackColor = Color.White,
+                        FillColor = Color.Transparent,
+                    };
+                    pn_BanCo.Controls.Add(btn);
+                    oldButton = btn;
+                    btn.Click += Btn_Click;
+                }
+                oldButton.Location = new Point(0, oldButton.Location.Y + Helpers.CHESS_HEIGHT);
+                oldButton.Width = 0;
+                oldButton.Height = 0;
+            }
+        }
+
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAI));
@@ -48,6 +87,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_you = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2GradientPanel1.SuspendLayout();
             this.pn_Diem.SuspendLayout();
             this.pn_HuongDan.SuspendLayout();
@@ -72,6 +113,8 @@
             // 
             this.pn_Diem.BorderColor = System.Drawing.Color.Black;
             this.pn_Diem.BorderThickness = 1;
+            this.pn_Diem.Controls.Add(this.guna2HtmlLabel2);
+            this.pn_Diem.Controls.Add(this.lbl_you);
             this.pn_Diem.Controls.Add(this.btn_Thoat);
             this.pn_Diem.Controls.Add(this.btn_Redo);
             this.pn_Diem.Controls.Add(this.btn_Undo);
@@ -94,7 +137,7 @@
             this.btn_Thoat.FillColor2 = System.Drawing.Color.Navy;
             this.btn_Thoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Thoat.ForeColor = System.Drawing.Color.White;
-            this.btn_Thoat.Location = new System.Drawing.Point(123, 139);
+            this.btn_Thoat.Location = new System.Drawing.Point(200, 135);
             this.btn_Thoat.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(99, 45);
@@ -114,10 +157,10 @@
             this.btn_Redo.FillColor2 = System.Drawing.Color.Navy;
             this.btn_Redo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Redo.ForeColor = System.Drawing.Color.White;
-            this.btn_Redo.Location = new System.Drawing.Point(212, 70);
+            this.btn_Redo.Location = new System.Drawing.Point(8, 135);
             this.btn_Redo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Redo.Name = "btn_Redo";
-            this.btn_Redo.Size = new System.Drawing.Size(99, 45);
+            this.btn_Redo.Size = new System.Drawing.Size(108, 45);
             this.btn_Redo.TabIndex = 1;
             this.btn_Redo.Text = "Redo";
             this.btn_Redo.Click += new System.EventHandler(this.btn_Redo_Click);
@@ -154,10 +197,10 @@
             this.btn_newGame.FillColor2 = System.Drawing.Color.Navy;
             this.btn_newGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_newGame.ForeColor = System.Drawing.Color.White;
-            this.btn_newGame.Location = new System.Drawing.Point(91, 7);
+            this.btn_newGame.Location = new System.Drawing.Point(181, 70);
             this.btn_newGame.Margin = new System.Windows.Forms.Padding(4);
             this.btn_newGame.Name = "btn_newGame";
-            this.btn_newGame.Size = new System.Drawing.Size(146, 45);
+            this.btn_newGame.Size = new System.Drawing.Size(130, 45);
             this.btn_newGame.TabIndex = 1;
             this.btn_newGame.Text = "New Game";
             this.btn_newGame.Click += new System.EventHandler(this.btn_newGame_Click);
@@ -251,25 +294,25 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.newGameToolStripMenuItem.Text = "New game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // optionToolStripMenuItem
             // 
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.optionToolStripMenuItem.Text = "Option";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -283,6 +326,27 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 26);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // lbl_you
+            // 
+            this.lbl_you.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_you.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_you.Location = new System.Drawing.Point(8, 6);
+            this.lbl_you.Name = "lbl_you";
+            this.lbl_you.Size = new System.Drawing.Size(69, 24);
+            this.lbl_you.TabIndex = 2;
+            this.lbl_you.Text = "X (You):";
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.Red;
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(8, 36);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(117, 24);
+            this.guna2HtmlLabel2.TabIndex = 2;
+            this.guna2HtmlLabel2.Text = "O (Computer):";
             // 
             // FrmAI
             // 
@@ -302,6 +366,7 @@
             this.Text = "Game Cờ Caro";
             this.guna2GradientPanel1.ResumeLayout(false);
             this.pn_Diem.ResumeLayout(false);
+            this.pn_Diem.PerformLayout();
             this.pn_HuongDan.ResumeLayout(false);
             this.pn_HuongDan.PerformLayout();
             this.pn_Anh.ResumeLayout(false);
@@ -312,7 +377,7 @@
             this.PerformLayout();
 
         }
-
+       
         #endregion
         public Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2GradientPanel pn_Anh;
@@ -333,5 +398,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private Guna.UI2.WinForms.Guna2GradientButton btn_Thoat;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_you;
     }
 }

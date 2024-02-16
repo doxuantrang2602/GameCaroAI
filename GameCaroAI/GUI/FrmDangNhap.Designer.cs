@@ -1,4 +1,8 @@
-﻿namespace GameCaroAI
+﻿using GameCaroAI.Classes;
+using Guna.UI2.WinForms;
+using System.Drawing;
+
+namespace GameCaroAI
 {
     partial class FrmDangNhap
     {

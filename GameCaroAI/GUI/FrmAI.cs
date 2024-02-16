@@ -16,45 +16,12 @@ namespace GameCaroAI.GUI
     {
         public bool isXTurn = true;
         public string[,] board = new string[Helpers.CHESS_BOARD_WIDTH, Helpers.CHESS_BOARD_HEIGHT];
-        private Stack<Point> moveHistory = new Stack<Point>();
-        private Stack<Point> undoneMoves = new Stack<Point>();
         public FrmAI()
         {
             InitializeComponent();
             DrawChessBoard();
         }
-        public void DrawChessBoard()
-        {
-            Guna2Button oldButton = new Guna2Button()
-            {
-                Width = 0,
-                Location = new Point(0, 0),
-                BorderThickness = 1,
-                //BackColor = Color.White,
-                FillColor = Color.Transparent,
-            };
-            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
-            {
-                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
-                {
-                    Guna2Button btn = new Guna2Button()
-                    {
-                        Width = Helpers.CHESS_WIDTH,
-                        Height = Helpers.CHESS_HEIGHT,
-                        Location = new Point(oldButton.Location.X + oldButton.Width, oldButton.Location.Y),
-                        BorderThickness = 1,
-                        //BackColor = Color.White,
-                        FillColor = Color.Transparent,
-                    };
-                    pn_BanCo.Controls.Add(btn);
-                    oldButton = btn;
-                    btn.Click += Btn_Click;
-                }
-                oldButton.Location = new Point(0, oldButton.Location.Y + Helpers.CHESS_HEIGHT);
-                oldButton.Width = 0;
-                oldButton.Height = 0;
-            }
-        }
+        
         private void Btn_Click(object sender, EventArgs e)
         {
             Guna2Button btn = sender as Guna2Button;
@@ -75,12 +42,9 @@ namespace GameCaroAI.GUI
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
                 }
-                moveHistory.Push(new Point(col, row));
-                undoneMoves.Clear();
-
                 if (CheckWinner(col, row))
                 {
-                    MessageBox.Show((isXTurn ? "X" : "O") + " wins!");
+                    MessageBox.Show("Người chơi " + (isXTurn ? "X" : "O") + " wins!");
                     
                 }
                 else
@@ -189,20 +153,7 @@ namespace GameCaroAI.GUI
 
         private void btn_Undo_Click(object sender, EventArgs e)
         {
-            if (moveHistory.Count > 0)
-            {
-                Point lastMove = moveHistory.Pop();
-                undoneMoves.Push(lastMove);
-
-                int col = lastMove.X;
-                int row = lastMove.Y;
-                Guna2Button btn = pn_BanCo.Controls.Cast<Control>()
-                    .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col 
-                                    && control.Location.Y / Helpers.CHESS_HEIGHT == row) 
-                                    as Guna2Button;
-                btn.BackgroundImage = null;
-                board[col, row] = null;
-            }
+            
         }
 
         private void btn_Redo_Click(object sender, EventArgs e)

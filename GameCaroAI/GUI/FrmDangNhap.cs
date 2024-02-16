@@ -82,8 +82,6 @@ namespace GameCaroAI
             dragging = true;
             dragCursorPoint = Cursor.Position;
             dragFormPoint = this.Location;
-        }
-
-        
+        }       
     }
 }
