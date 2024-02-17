@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DataProcesserTrang.cs" />
+    <Compile Include="Classes\Guna2Button_Test.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="GUI\FrmAI.cs">
       <SubType>Form</SubType>

@@ -44,7 +44,7 @@ namespace GameCaroAI.GUI
                     undoneMoves.Clear();
                     if (CheckWinner(col, row))
                     {
-                        MessageBox.Show("X wins!");
+                        MessageBox.Show("Player X wins!");
                         return;
                     }
                     isXTurn = false;
@@ -62,7 +62,7 @@ namespace GameCaroAI.GUI
                     undoneMoves.Clear();
                     if (CheckWinner(col, row))
                     {
-                        MessageBox.Show("O wins!");
+                        MessageBox.Show("Player O wins!");
                         return;
                     }
                     isXTurn = true;
@@ -208,7 +208,11 @@ namespace GameCaroAI.GUI
                 int col = redoMove.X;
                 int row = redoMove.Y;
 
-                Guna2Button btn = pn_BanCo.Controls.Cast<Control>().FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && control.Location.Y / Helpers.CHESS_HEIGHT == row) as Guna2Button;
+                Guna2Button btn = pn_BanCo.Controls
+                    .Cast<Control>()
+                    .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && 
+                    control.Location.Y / Helpers.CHESS_HEIGHT == row) 
+                    as Guna2Button;
 
                 if (isXTurn)
                 {

@@ -70,6 +70,8 @@ namespace GameCaroAI.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_TwoPlayers));
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.pn_Diem = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.lbl_O = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbl_X = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_Thoat = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_Redo = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_Undo = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -87,8 +89,6 @@ namespace GameCaroAI.GUI
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_X = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbl_O = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2GradientPanel1.SuspendLayout();
             this.pn_Diem.SuspendLayout();
             this.pn_HuongDan.SuspendLayout();
@@ -124,6 +124,28 @@ namespace GameCaroAI.GUI
             this.pn_Diem.Name = "pn_Diem";
             this.pn_Diem.Size = new System.Drawing.Size(333, 193);
             this.pn_Diem.TabIndex = 2;
+            // 
+            // lbl_O
+            // 
+            this.lbl_O.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_O.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_O.ForeColor = System.Drawing.Color.Red;
+            this.lbl_O.Location = new System.Drawing.Point(8, 36);
+            this.lbl_O.Name = "lbl_O";
+            this.lbl_O.Size = new System.Drawing.Size(28, 31);
+            this.lbl_O.TabIndex = 2;
+            this.lbl_O.Text = "O:";
+            // 
+            // lbl_X
+            // 
+            this.lbl_X.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_X.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_X.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_X.Location = new System.Drawing.Point(8, 6);
+            this.lbl_X.Name = "lbl_X";
+            this.lbl_X.Size = new System.Drawing.Size(26, 31);
+            this.lbl_X.TabIndex = 2;
+            this.lbl_X.Text = "X:";
             // 
             // btn_Thoat
             // 
@@ -259,7 +281,7 @@ namespace GameCaroAI.GUI
             this.pn_BanCo.BackColor = System.Drawing.Color.White;
             this.pn_BanCo.BorderColor = System.Drawing.Color.Black;
             this.pn_BanCo.BorderThickness = 1;
-            this.pn_BanCo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pn_BanCo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_BanCo.Location = new System.Drawing.Point(0, 30);
             this.pn_BanCo.Margin = new System.Windows.Forms.Padding(4);
             this.pn_BanCo.Name = "pn_BanCo";
@@ -294,25 +316,25 @@ namespace GameCaroAI.GUI
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.newGameToolStripMenuItem.Text = "New game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // optionToolStripMenuItem
             // 
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.optionToolStripMenuItem.Text = "Option";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -326,28 +348,6 @@ namespace GameCaroAI.GUI
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 26);
             this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // lbl_X
-            // 
-            this.lbl_X.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_X.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_X.ForeColor = System.Drawing.Color.Blue;
-            this.lbl_X.Location = new System.Drawing.Point(8, 6);
-            this.lbl_X.Name = "lbl_X";
-            this.lbl_X.Size = new System.Drawing.Size(26, 31);
-            this.lbl_X.TabIndex = 2;
-            this.lbl_X.Text = "X:";
-            // 
-            // lbl_O
-            // 
-            this.lbl_O.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_O.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_O.ForeColor = System.Drawing.Color.Red;
-            this.lbl_O.Location = new System.Drawing.Point(8, 36);
-            this.lbl_O.Name = "lbl_O";
-            this.lbl_O.Size = new System.Drawing.Size(28, 31);
-            this.lbl_O.TabIndex = 2;
-            this.lbl_O.Text = "O:";
             // 
             // Frm_TwoPlayers
             // 
