@@ -359,6 +359,7 @@ namespace GameCaroAI.GUI
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.mnstCaro);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnstCaro;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_TwoPlayers";
