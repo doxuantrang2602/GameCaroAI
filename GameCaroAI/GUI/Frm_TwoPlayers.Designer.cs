@@ -45,7 +45,7 @@ namespace GameCaroAI.GUI
             };
             for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
             {
-                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
+                for (int j = 0; j <= Helpers.CHESS_BOARD_WIDTH; j++)
                 {
                     Guna2Button btn = new Guna2Button()
                     {

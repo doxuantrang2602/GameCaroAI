@@ -264,7 +264,7 @@ namespace GameCaroAI.GUI
             }
         }
 
-        private int Evaluate(string[,] board, string player)
+        public int Evaluate(string[,] board, string player)
         {
             int score = 0;
 
@@ -308,7 +308,7 @@ namespace GameCaroAI.GUI
         }
 
         // Hàm đánh giá cho từng dãy liên tiếp
-        private int EvaluateLine(string[,] board, string player, int row, int col, int dRow, int dCol)
+        public int EvaluateLine(string[,] board, string player, int row, int col, int dRow, int dCol)
         {
             int score = 0;
             int playerCount = 0; // Số lượng ô đã được chiếm bởi người chơi hiện tại
@@ -367,7 +367,7 @@ namespace GameCaroAI.GUI
             }*/
             return true;
         }
-        private bool CheckWinner(int row, int col)
+        public bool CheckWinner(int row, int col)
         {
             string player = isYourTurn ? "X" : "O";
 
