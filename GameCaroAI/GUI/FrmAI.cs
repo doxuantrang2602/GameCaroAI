@@ -355,17 +355,20 @@ namespace GameCaroAI.GUI
 
         private bool IsGameOver(string[,] board)
         {
-            /*for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            // Kiểm tra bàn cờ đầy
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
             {
                 for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
                 {
                     if (board[i, j] == null)
                     {
-                        return false;
+                        return true;
+                        break;
                     }
                 }
-            }*/
-            return true;
+            }
+            MessageBox.Show("Cờ hòa !");
+            return false;
         }
         public bool CheckWinner(int row, int col)
         {
