@@ -12,6 +12,7 @@ namespace GameCaroAI.Classes
     {
         string connectStr = "Data Source=DESKTOP-SVVHT2F\\SQLEXPRESS;Initial Catalog=GameCaroAI;Integrated Security=True";
         SqlConnection sqlConn = null;
+
         public void OpenConnect()
         {
             sqlConn = new SqlConnection(connectStr);

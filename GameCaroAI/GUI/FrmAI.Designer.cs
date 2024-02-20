@@ -32,7 +32,6 @@ namespace GameCaroAI.GUI
         /// </summary>
         /// 
 
-        
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAI));

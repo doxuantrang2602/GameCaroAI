@@ -175,7 +175,7 @@ namespace GameCaroAI.GUI
 
                 int col = lastMove.X;
                 int row = lastMove.Y;
-                Guna2Button btn = pn_BanCo.Controls.Cast<Control>()
+                Guna2Button btn = pn_ChessBoard.Controls.Cast<Control>()
                     .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col
                                     && control.Location.Y / Helpers.CHESS_HEIGHT == row)
                     as Guna2Button;
@@ -208,7 +208,7 @@ namespace GameCaroAI.GUI
                 int col = redoMove.X;
                 int row = redoMove.Y;
 
-                Guna2Button btn = pn_BanCo.Controls
+                Guna2Button btn = pn_ChessBoard.Controls
                     .Cast<Control>()
                     .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && 
                     control.Location.Y / Helpers.CHESS_HEIGHT == row) 

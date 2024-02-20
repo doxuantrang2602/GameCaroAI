@@ -363,7 +363,7 @@ namespace GameCaroAI.GUI
                     if (board[i, j] == null)
                     {
                         return true;
-                        break;
+                        
                     }
                 }
             }

@@ -56,7 +56,7 @@ namespace GameCaroAI.GUI
                         BackColor = Color.White,
                         FillColor = Color.Transparent,
                     };
-                    pn_BanCo.Controls.Add(btn);
+                    pn_ChessBoard.Controls.Add(btn);
                     oldButton = btn;
                     btn.Click += Btn_Click;
                 }
@@ -80,7 +80,7 @@ namespace GameCaroAI.GUI
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pn_Anh = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.ptb_Anh = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.pn_BanCo = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.pn_ChessBoard = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.mnstCaro = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,9 +132,9 @@ namespace GameCaroAI.GUI
             this.lbl_O.ForeColor = System.Drawing.Color.Red;
             this.lbl_O.Location = new System.Drawing.Point(8, 36);
             this.lbl_O.Name = "lbl_O";
-            this.lbl_O.Size = new System.Drawing.Size(28, 31);
+            this.lbl_O.Size = new System.Drawing.Size(137, 31);
             this.lbl_O.TabIndex = 2;
-            this.lbl_O.Text = "O:";
+            this.lbl_O.Text = "O (Player 2):";
             // 
             // lbl_X
             // 
@@ -143,9 +143,9 @@ namespace GameCaroAI.GUI
             this.lbl_X.ForeColor = System.Drawing.Color.Blue;
             this.lbl_X.Location = new System.Drawing.Point(8, 6);
             this.lbl_X.Name = "lbl_X";
-            this.lbl_X.Size = new System.Drawing.Size(26, 31);
+            this.lbl_X.Size = new System.Drawing.Size(135, 31);
             this.lbl_X.TabIndex = 2;
-            this.lbl_X.Text = "X:";
+            this.lbl_X.Text = "X (Player 1):";
             // 
             // btn_Thoat
             // 
@@ -276,17 +276,17 @@ namespace GameCaroAI.GUI
             this.ptb_Anh.TabIndex = 0;
             this.ptb_Anh.TabStop = false;
             // 
-            // pn_BanCo
+            // pn_ChessBoard
             // 
-            this.pn_BanCo.BackColor = System.Drawing.Color.White;
-            this.pn_BanCo.BorderColor = System.Drawing.Color.Black;
-            this.pn_BanCo.BorderThickness = 1;
-            this.pn_BanCo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pn_BanCo.Location = new System.Drawing.Point(0, 30);
-            this.pn_BanCo.Margin = new System.Windows.Forms.Padding(4);
-            this.pn_BanCo.Name = "pn_BanCo";
-            this.pn_BanCo.Size = new System.Drawing.Size(752, 658);
-            this.pn_BanCo.TabIndex = 3;
+            this.pn_ChessBoard.BackColor = System.Drawing.Color.White;
+            this.pn_ChessBoard.BorderColor = System.Drawing.Color.Black;
+            this.pn_ChessBoard.BorderThickness = 1;
+            this.pn_ChessBoard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pn_ChessBoard.Location = new System.Drawing.Point(0, 30);
+            this.pn_ChessBoard.Margin = new System.Windows.Forms.Padding(4);
+            this.pn_ChessBoard.Name = "pn_ChessBoard";
+            this.pn_ChessBoard.Size = new System.Drawing.Size(752, 658);
+            this.pn_ChessBoard.TabIndex = 3;
             // 
             // mnstCaro
             // 
@@ -355,7 +355,7 @@ namespace GameCaroAI.GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1085, 688);
-            this.Controls.Add(this.pn_BanCo);
+            this.Controls.Add(this.pn_ChessBoard);
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.mnstCaro);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -382,7 +382,7 @@ namespace GameCaroAI.GUI
         #endregion
         public Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2GradientPanel pn_Anh;
-        public Guna.UI2.WinForms.Guna2GradientPanel pn_BanCo;
+        public Guna.UI2.WinForms.Guna2GradientPanel pn_ChessBoard;
         private System.Windows.Forms.MenuStrip mnstCaro;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
