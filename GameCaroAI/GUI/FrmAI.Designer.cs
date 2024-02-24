@@ -34,6 +34,7 @@ namespace GameCaroAI.GUI
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAI));
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.pn_Activity = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -56,6 +57,7 @@ namespace GameCaroAI.GUI
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.time_Instruction = new System.Windows.Forms.Timer(this.components);
             this.guna2GradientPanel1.SuspendLayout();
             this.pn_Activity.SuspendLayout();
             this.pn_Intruction.SuspendLayout();
@@ -281,25 +283,25 @@ namespace GameCaroAI.GUI
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.newGameToolStripMenuItem.Text = "New game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // optionToolStripMenuItem
             // 
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.optionToolStripMenuItem.Text = "Option";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -314,6 +316,10 @@ namespace GameCaroAI.GUI
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 26);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // time_Instruction
+            // 
+            this.time_Instruction.Tick += new System.EventHandler(this.time_Instruction_Tick);
             // 
             // FrmAI
             // 
@@ -367,5 +373,6 @@ namespace GameCaroAI.GUI
         private Guna.UI2.WinForms.Guna2GradientButton btn_Exit;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_Computer;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_You;
+        private System.Windows.Forms.Timer time_Instruction;
     }
 }

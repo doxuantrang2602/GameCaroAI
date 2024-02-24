@@ -479,5 +479,10 @@ namespace GameCaroAI.GUI
         {
             this.Hide();
         }
+
+        private void time_Instruction_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
