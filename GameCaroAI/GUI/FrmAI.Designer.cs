@@ -84,10 +84,10 @@ namespace GameCaroAI.GUI
 			this.btn_Exit.FillColor2 = System.Drawing.Color.Transparent;
 			this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Exit.ForeColor = System.Drawing.Color.White;
-			this.btn_Exit.Location = new System.Drawing.Point(884, 225);
+			this.btn_Exit.Location = new System.Drawing.Point(891, 229);
 			this.btn_Exit.Margin = new System.Windows.Forms.Padding(4);
 			this.btn_Exit.Name = "btn_Exit";
-			this.btn_Exit.Size = new System.Drawing.Size(93, 45);
+			this.btn_Exit.Size = new System.Drawing.Size(112, 45);
 			this.btn_Exit.TabIndex = 1;
 			this.btn_Exit.Text = "Thoát";
 			this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
@@ -105,10 +105,10 @@ namespace GameCaroAI.GUI
 			this.btn_Redo.FillColor2 = System.Drawing.Color.Transparent;
 			this.btn_Redo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Redo.ForeColor = System.Drawing.Color.White;
-			this.btn_Redo.Location = new System.Drawing.Point(884, 172);
+			this.btn_Redo.Location = new System.Drawing.Point(891, 176);
 			this.btn_Redo.Margin = new System.Windows.Forms.Padding(4);
 			this.btn_Redo.Name = "btn_Redo";
-			this.btn_Redo.Size = new System.Drawing.Size(93, 45);
+			this.btn_Redo.Size = new System.Drawing.Size(112, 45);
 			this.btn_Redo.TabIndex = 1;
 			this.btn_Redo.Text = "Redo";
 			// 
@@ -125,10 +125,10 @@ namespace GameCaroAI.GUI
 			this.btn_Undo.FillColor2 = System.Drawing.Color.Transparent;
 			this.btn_Undo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Undo.ForeColor = System.Drawing.Color.White;
-			this.btn_Undo.Location = new System.Drawing.Point(884, 119);
+			this.btn_Undo.Location = new System.Drawing.Point(891, 123);
 			this.btn_Undo.Margin = new System.Windows.Forms.Padding(4);
 			this.btn_Undo.Name = "btn_Undo";
-			this.btn_Undo.Size = new System.Drawing.Size(93, 45);
+			this.btn_Undo.Size = new System.Drawing.Size(112, 45);
 			this.btn_Undo.TabIndex = 1;
 			this.btn_Undo.Text = "Undo";
 			// 
@@ -145,7 +145,7 @@ namespace GameCaroAI.GUI
 			this.btn_newGame.FillColor2 = System.Drawing.Color.Transparent;
 			this.btn_newGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_newGame.ForeColor = System.Drawing.Color.White;
-			this.btn_newGame.Location = new System.Drawing.Point(863, 61);
+			this.btn_newGame.Location = new System.Drawing.Point(870, 65);
 			this.btn_newGame.Margin = new System.Windows.Forms.Padding(4);
 			this.btn_newGame.Name = "btn_newGame";
 			this.btn_newGame.Size = new System.Drawing.Size(133, 47);
@@ -162,9 +162,9 @@ namespace GameCaroAI.GUI
 			this.pn_Intruction.Controls.Add(this.guna2HtmlLabel1);
 			this.pn_Intruction.FillColor = System.Drawing.Color.PapayaWhip;
 			this.pn_Intruction.FillColor2 = System.Drawing.Color.Transparent;
-			this.pn_Intruction.Location = new System.Drawing.Point(24, 670);
+			this.pn_Intruction.Location = new System.Drawing.Point(21, 690);
 			this.pn_Intruction.Name = "pn_Intruction";
-			this.pn_Intruction.Size = new System.Drawing.Size(1035, 73);
+			this.pn_Intruction.Size = new System.Drawing.Size(1056, 75);
 			this.pn_Intruction.TabIndex = 1;
 			// 
 			// guna2HtmlLabel1
@@ -172,7 +172,7 @@ namespace GameCaroAI.GUI
 			this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
 			this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Ivory;
-			this.guna2HtmlLabel1.Location = new System.Drawing.Point(13, 3);
+			this.guna2HtmlLabel1.Location = new System.Drawing.Point(13, 6);
 			this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
 			this.guna2HtmlLabel1.Size = new System.Drawing.Size(136, 31);
 			this.guna2HtmlLabel1.TabIndex = 0;
@@ -187,7 +187,7 @@ namespace GameCaroAI.GUI
 			this.pn_ChessBoard.Location = new System.Drawing.Point(202, 119);
 			this.pn_ChessBoard.Margin = new System.Windows.Forms.Padding(4);
 			this.pn_ChessBoard.Name = "pn_ChessBoard";
-			this.pn_ChessBoard.Size = new System.Drawing.Size(674, 552);
+			this.pn_ChessBoard.Size = new System.Drawing.Size(691, 571);
 			this.pn_ChessBoard.TabIndex = 3;
 			this.pn_ChessBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.pn_ChessBoard_Paint);
 			// 
@@ -202,7 +202,7 @@ namespace GameCaroAI.GUI
 			this.BackColor = System.Drawing.Color.WhiteSmoke;
 			this.BackgroundImage = global::GameCaroAI.Properties.Resources.Khungad2;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(1085, 820);
+			this.ClientSize = new System.Drawing.Size(1105, 843);
 			this.Controls.Add(this.lbl_Computer);
 			this.Controls.Add(this.pn_ChessBoard);
 			this.Controls.Add(this.lbl_You);
