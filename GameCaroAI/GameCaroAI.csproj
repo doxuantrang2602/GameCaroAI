@@ -135,6 +135,7 @@
     <Content Include="Assess\Icon\iconCaro_1.ico" />
     <Content Include="Assess\Images\Caro.png" />
     <Content Include="Assess\Images\iconCaro.png" />
+    <Content Include="Resources\timer.png" />
     <Content Include="Assess\Images\Welcome.png" />
     <Content Include="Assess\Images\O.png" />
     <Content Include="Assess\Images\X.png" />

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameCaroAI.Classes;
 using Guna.UI2.WinForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace GameCaroAI.GUI
 {
@@ -24,11 +25,39 @@ namespace GameCaroAI.GUI
         public int comCount = 0;
         public string[,] board = new string[Helpers.CHESS_BOARD_HEIGHT, Helpers.CHESS_BOARD_WIDTH];
         public const int WIN_SCORE = -10000000;
+        private int timeLeft;
 
         public FrmAI()
         {
             InitializeComponent();
             DrawChessBoard();
+            StartCountdown(60);
+        }
+        private void StartCountdown(int seconds)
+        {
+            timeLeft = seconds; 
+            UpdateLabelTime();
+            timer_Lose.Start();
+        }
+        private void timer_Lose_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                timeLeft--; 
+                UpdateLabelTime();
+            }
+            else
+            {
+                timer_Lose.Stop();
+                MessageBox.Show("Time's up!");
+            }
+        }
+        
+        private void UpdateLabelTime()
+        {
+            int minutes = timeLeft / 60;
+            int seconds = timeLeft % 60;
+            lb_timer.Text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         public void DrawChessBoard()
         {
@@ -75,7 +104,7 @@ namespace GameCaroAI.GUI
                     }
                     xFirstMoveRow = row;
                     xFirstMoveCol = col;
-
+                    
                     isYourTurn = false;
                     isComputerTurn = true;
                     MachinePlayO();
@@ -174,6 +203,7 @@ namespace GameCaroAI.GUI
                     UpdateBoard(row, col);
                 }
             }
+            StartCountdown(60);
         }
 
         public void UpdateBoard(int row, int col)
@@ -460,13 +490,7 @@ namespace GameCaroAI.GUI
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?",
-                                    "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-                this.Close();
-            }
+            this.Close();
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -485,15 +509,6 @@ namespace GameCaroAI.GUI
         {
 
         }
-
-		private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void pn_ChessBoard_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-	}
+        
+    }
 }
