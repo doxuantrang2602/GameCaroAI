@@ -3,7 +3,6 @@ D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.pdb
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Guna.UI2.dll
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.AssemblyReference.cache
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.FrmDangNhap.resources
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.Properties.Resources.resources
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.GenerateResource.cache
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CoreCompileInputs.cache
@@ -11,3 +10,5 @@ D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CopyComplet
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.exe
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.FrmAI.resources
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_TwoPlayers.resources
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Login.resources

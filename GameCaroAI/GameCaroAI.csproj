@@ -53,28 +53,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DataProcesserTrang.cs" />
-    <Compile Include="Classes\ChessBoarManager.cs" />
+    <Compile Include="Classes\Guna2Button_Test.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\Helpers.cs" />
-    <Compile Include="Classes\XOButton.cs" />
     <Compile Include="GUI\FrmAI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\FrmAI.Designer.cs">
       <DependentUpon>FrmAI.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FrmDangNhap.cs">
+    <Compile Include="GUI\Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\FrmDangNhap.Designer.cs">
-      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    <Compile Include="GUI\Frm_Login.Designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frm_TwoPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Frm_TwoPlayers.Designer.cs">
+      <DependentUpon>Frm_TwoPlayers.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\FrmAI.resx">
       <DependentUpon>FrmAI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FrmDangNhap.resx">
-      <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Frm_TwoPlayers.resx">
+      <DependentUpon>Frm_TwoPlayers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

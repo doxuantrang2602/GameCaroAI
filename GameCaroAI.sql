@@ -10,3 +10,5 @@ create table Rules
 	constraint PK_Rules primary key(RuleID)
 )
 go
+
+-- Chưa thêm rì
