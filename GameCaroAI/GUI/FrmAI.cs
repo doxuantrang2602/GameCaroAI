@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameCaroAI.Classes;
 using Guna.UI2.WinForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace GameCaroAI.GUI
 {
@@ -23,11 +25,39 @@ namespace GameCaroAI.GUI
         public int comCount = 0;
         public string[,] board = new string[Helpers.CHESS_BOARD_HEIGHT, Helpers.CHESS_BOARD_WIDTH];
         public const int WIN_SCORE = -10000000;
+        private int timeLeft;
 
         public FrmAI()
         {
             InitializeComponent();
             DrawChessBoard();
+            StartCountdown(60);
+        }
+        private void StartCountdown(int seconds)
+        {
+            timeLeft = seconds; 
+            UpdateLabelTime();
+            timer_Lose.Start();
+        }
+        private void timer_Lose_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                timeLeft--; 
+                UpdateLabelTime();
+            }
+            else
+            {
+                timer_Lose.Stop();
+                MessageBox.Show("Time's up!");
+            }
+        }
+        
+        private void UpdateLabelTime()
+        {
+            int minutes = timeLeft / 60;
+            int seconds = timeLeft % 60;
+            lb_timer.Text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         public void DrawChessBoard()
         {
@@ -62,7 +92,9 @@ namespace GameCaroAI.GUI
 
                 if (isYourTurn)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/X.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
+
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[row, col] = "X";
                     xCount++;
@@ -74,7 +106,7 @@ namespace GameCaroAI.GUI
                     }
                     xFirstMoveRow = row;
                     xFirstMoveCol = col;
-
+                    
                     isYourTurn = false;
                     isComputerTurn = true;
                     MachinePlayO();
@@ -173,6 +205,7 @@ namespace GameCaroAI.GUI
                     UpdateBoard(row, col);
                 }
             }
+            StartCountdown(60);
         }
 
         public void UpdateBoard(int row, int col)
@@ -181,8 +214,10 @@ namespace GameCaroAI.GUI
             {
                 if (c is Guna2ButtonWithPosition btn && btn.Row == row && btn.Col == col)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/O.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
+
                     board[row, col] = "O";
                     comCount++;
                     lbl_Computer.Text = "O (Computer): " + comCount.ToString();
@@ -363,7 +398,7 @@ namespace GameCaroAI.GUI
                     if (board[i, j] == null)
                     {
                         return true;
-                        break;
+                        
                     }
                 }
             }
@@ -459,13 +494,7 @@ namespace GameCaroAI.GUI
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?",
-                                    "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-                this.Close();
-            }
+            this.Close();
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -479,5 +508,11 @@ namespace GameCaroAI.GUI
         {
             this.Hide();
         }
+
+        private void time_Instruction_Tick(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

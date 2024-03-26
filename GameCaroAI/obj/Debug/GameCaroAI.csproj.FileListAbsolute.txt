@@ -12,3 +12,60 @@ D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.FrmAI.resources
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_TwoPlayers.resources
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Login.resources
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe.config
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.pdb
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Guna.UI2.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.AssemblyReference.cache
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.FrmAI.resources
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Login.resources
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_TwoPlayers.resources
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.Properties.Resources.resources
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.GenerateResource.cache
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CoreCompileInputs.cache
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CopyComplete
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.exe
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.1.5.3.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu_UI_v1.5.3.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.Licensing.dll
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.1.5.3.dll
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu_UI_v1.5.3.dll
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.Licensing.dll
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe.config
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.pdb
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.Licensing.dll
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+D:\AI\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.AssemblyReference.cache
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.FrmAI.resources
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Login.resources
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_TwoPlayers.resources
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.Properties.Resources.resources
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.GenerateResource.cache
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CoreCompileInputs.cache
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CopyComplete
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.exe
+D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb

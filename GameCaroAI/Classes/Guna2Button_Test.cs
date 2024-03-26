@@ -12,5 +12,4 @@ namespace GameCaroAI.Classes
         public int Col { get; set; }
         public int Row { get; set; }
     }
-
 }
