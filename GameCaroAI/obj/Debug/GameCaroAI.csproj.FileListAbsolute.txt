@@ -1,7 +1,6 @@
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe.config
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.pdb
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Guna.UI2.dll
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.AssemblyReference.cache
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.Properties.Resources.resources
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.GenerateResource.cache
@@ -38,12 +37,6 @@ D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\Game
 D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
 D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
 D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.1.5.3.dll
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu_UI_v1.5.3.dll
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.Licensing.dll
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml

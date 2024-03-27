@@ -92,7 +92,7 @@ namespace GameCaroAI.GUI
 
                 if (isYourTurn)
                 {
-                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/X.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess\\Images\\X.png");
                     btn.BackgroundImage = Image.FromFile(imagePath);
 
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
@@ -214,7 +214,7 @@ namespace GameCaroAI.GUI
             {
                 if (c is Guna2ButtonWithPosition btn && btn.Row == row && btn.Col == col)
                 {
-                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/O.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess\\Images\\O.png");
                     btn.BackgroundImage = Image.FromFile(imagePath);
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
 

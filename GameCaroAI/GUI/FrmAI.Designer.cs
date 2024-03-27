@@ -91,7 +91,7 @@ namespace GameCaroAI.GUI
             this.btn_back.Location = new System.Drawing.Point(891, 229);
             this.btn_back.Margin = new System.Windows.Forms.Padding(4);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(112, 45);
+            this.btn_back.Size = new System.Drawing.Size(96, 38);
             this.btn_back.TabIndex = 1;
             this.btn_back.Text = "Back";
             this.btn_back.Click += new System.EventHandler(this.btn_Exit_Click);
@@ -112,7 +112,7 @@ namespace GameCaroAI.GUI
             this.btn_Redo.Location = new System.Drawing.Point(891, 176);
             this.btn_Redo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Redo.Name = "btn_Redo";
-            this.btn_Redo.Size = new System.Drawing.Size(112, 45);
+            this.btn_Redo.Size = new System.Drawing.Size(96, 45);
             this.btn_Redo.TabIndex = 1;
             this.btn_Redo.Text = "Redo";
             // 
@@ -132,7 +132,7 @@ namespace GameCaroAI.GUI
             this.btn_Undo.Location = new System.Drawing.Point(891, 123);
             this.btn_Undo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Undo.Name = "btn_Undo";
-            this.btn_Undo.Size = new System.Drawing.Size(112, 45);
+            this.btn_Undo.Size = new System.Drawing.Size(96, 45);
             this.btn_Undo.TabIndex = 1;
             this.btn_Undo.Text = "Undo";
             // 
