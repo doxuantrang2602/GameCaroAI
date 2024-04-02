@@ -236,7 +236,10 @@ namespace GameCaroAI.GUI
         public int[] FindBestMove()
         {
             int[] bestMove = new int[2];
+            int alpha = int.MinValue;
+            int beta = int.MaxValue;
             int bestScore = int.MinValue;
+
             for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
             {
                 for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
@@ -244,8 +247,9 @@ namespace GameCaroAI.GUI
                     if (board[i, j] == null)
                     {
                         board[i, j] = "O";
-                        int score = Minimax(board, 0, false);
+                        int score = Minimax_AlphaBeta(board, 0, alpha, beta, false);
                         board[i, j] = null;
+
                         if (score > bestScore)
                         {
                             bestScore = score;
@@ -257,12 +261,15 @@ namespace GameCaroAI.GUI
             }
             return bestMove;
         }
-        public int Minimax(string[,] board, int depth, bool isMaximizing)
+       
+
+        public int Minimax_AlphaBeta(string[,] board, int depth, int alpha, int beta, bool isMaximizing)
         {
             if (depth == MAX_DEPTH || IsGameOver(board))
             {
                 return Evaluate(board, "O");
             }
+
             if (isMaximizing)
             {
                 int bestScore = int.MinValue;
@@ -273,11 +280,15 @@ namespace GameCaroAI.GUI
                         if (board[i, j] == null)
                         {
                             board[i, j] = "O";
-                            int score = Minimax(board, depth + 1, false);
+                            int score = Minimax_AlphaBeta(board, depth + 1, alpha, beta, false);
                             board[i, j] = null;
                             bestScore = Math.Max(score, bestScore);
+                            alpha = Math.Max(alpha, bestScore);
+                            if (beta <= alpha)
+                            {
+                                break;
+                            }
                         }
-
                     }
                 }
                 return bestScore;
@@ -289,15 +300,24 @@ namespace GameCaroAI.GUI
                 {
                     for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
                     {
-                        board[i, j] = "X";
-                        int score = Minimax(board, depth + 1, true);
-                        board[i, j] = null;
-                        bestScore = Math.Min(score, bestScore);
+                        if (board[i, j] == null)
+                        {
+                            board[i, j] = "X";
+                            int score = Minimax_AlphaBeta(board, depth + 1, alpha, beta, true);
+                            board[i, j] = null;
+                            bestScore = Math.Min(score, bestScore);
+                            beta = Math.Min(beta, bestScore);
+                            if (beta <= alpha)
+                            {
+                                break;
+                            }
+                        }
                     }
                 }
                 return bestScore;
             }
         }
+
 
         public int Evaluate(string[,] board, string player)
         {
@@ -513,6 +533,10 @@ namespace GameCaroAI.GUI
         {
 
         }
-        
+
+        private void btn_Undo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
