@@ -57,7 +57,7 @@ namespace GameCaroAI.GUI
             this.lbl_Computer.ForeColor = System.Drawing.Color.Snow;
             this.lbl_Computer.Location = new System.Drawing.Point(212, 81);
             this.lbl_Computer.Name = "lbl_Computer";
-            this.lbl_Computer.Size = new System.Drawing.Size(156, 31);
+            this.lbl_Computer.Size = new System.Drawing.Size(117, 24);
             this.lbl_Computer.TabIndex = 2;
             this.lbl_Computer.Text = "O (Computer):";
             // 
@@ -68,7 +68,7 @@ namespace GameCaroAI.GUI
             this.lbl_You.ForeColor = System.Drawing.Color.Lavender;
             this.lbl_You.Location = new System.Drawing.Point(212, 52);
             this.lbl_You.Name = "lbl_You";
-            this.lbl_You.Size = new System.Drawing.Size(91, 31);
+            this.lbl_You.Size = new System.Drawing.Size(69, 24);
             this.lbl_You.TabIndex = 2;
             this.lbl_You.Text = "X (You):";
             // 
@@ -132,6 +132,7 @@ namespace GameCaroAI.GUI
             this.btn_Undo.Size = new System.Drawing.Size(96, 45);
             this.btn_Undo.TabIndex = 1;
             this.btn_Undo.Text = "Undo";
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // btn_newGame
             // 
@@ -153,7 +154,7 @@ namespace GameCaroAI.GUI
             this.btn_newGame.TabIndex = 1;
             this.btn_newGame.Text = "New Game";
             this.btn_newGame.Click += new System.EventHandler(this.btn_newGame_Click);
-            // 
+            //
             // pn_ChessBoard
             // 
             this.pn_ChessBoard.BackColor = System.Drawing.Color.White;
@@ -191,7 +192,7 @@ namespace GameCaroAI.GUI
             this.lb_timer.ForeColor = System.Drawing.Color.MistyRose;
             this.lb_timer.Location = new System.Drawing.Point(720, 65);
             this.lb_timer.Name = "lb_timer";
-            this.lb_timer.Size = new System.Drawing.Size(81, 29);
+            this.lb_timer.Size = new System.Drawing.Size(67, 25);
             this.lb_timer.TabIndex = 5;
             this.lb_timer.Text = "00:00";
             // 
@@ -202,7 +203,7 @@ namespace GameCaroAI.GUI
             // 
             // FrmAI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImage = global::GameCaroAI.Properties.Resources.Khungad2;
