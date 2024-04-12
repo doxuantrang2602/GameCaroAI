@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,13 +30,17 @@ namespace GameCaroAI.GUI
         private void Btn_Click(object sender, EventArgs e)
         {
             Guna2Button btn = sender as Guna2Button;
+            btn.BackColor = Color.Transparent;
             if (btn != null && btn.BackgroundImage == null)
+                               
             {
                 int row = btn.Location.Y / Helpers.CHESS_HEIGHT;
                 int col = btn.Location.X / Helpers.CHESS_WIDTH;
                 if (isXTurn)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/X.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
+
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "X";
                     xCount++;
@@ -52,7 +57,9 @@ namespace GameCaroAI.GUI
                 }
                 else if (isOTurn)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/O.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
+
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
                     oCount++;
@@ -175,7 +182,7 @@ namespace GameCaroAI.GUI
 
                 int col = lastMove.X;
                 int row = lastMove.Y;
-                Guna2Button btn = pn_BanCo.Controls.Cast<Control>()
+                Guna2Button btn = pn_ChessBoard.Controls.Cast<Control>()
                     .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col
                                     && control.Location.Y / Helpers.CHESS_HEIGHT == row)
                     as Guna2Button;
@@ -208,7 +215,7 @@ namespace GameCaroAI.GUI
                 int col = redoMove.X;
                 int row = redoMove.Y;
 
-                Guna2Button btn = pn_BanCo.Controls
+                Guna2Button btn = pn_ChessBoard.Controls
                     .Cast<Control>()
                     .FirstOrDefault(control => control.Location.X / Helpers.CHESS_WIDTH == col && 
                     control.Location.Y / Helpers.CHESS_HEIGHT == row) 
@@ -216,7 +223,9 @@ namespace GameCaroAI.GUI
 
                 if (isXTurn)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/X.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
+
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "X";
                     xCount++;
@@ -224,7 +233,9 @@ namespace GameCaroAI.GUI
                 }
                 else if (isOTurn)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/O.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
+
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[col, row] = "O";
                     oCount++;
@@ -246,5 +257,5 @@ namespace GameCaroAI.GUI
             Frm_TwoPlayers frm_two = new Frm_TwoPlayers();
             frm_two.ShowDialog();
         }
-    }
+	}
 }

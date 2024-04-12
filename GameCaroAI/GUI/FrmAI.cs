@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameCaroAI.Classes;
 using Guna.UI2.WinForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace GameCaroAI.GUI
 {
     public partial class FrmAI : Form
     {
-        public const int MAX_DEPTH = 3;
+        public const int MAX_DEPTH = 5;
         public bool isYourTurn = true;
         public bool isComputerTurn = true;
         public int xFirstMoveRow;
@@ -23,11 +25,39 @@ namespace GameCaroAI.GUI
         public int comCount = 0;
         public string[,] board = new string[Helpers.CHESS_BOARD_HEIGHT, Helpers.CHESS_BOARD_WIDTH];
         public const int WIN_SCORE = -10000000;
+        private int timeLeft;
 
         public FrmAI()
         {
             InitializeComponent();
             DrawChessBoard();
+            StartCountdown(60);
+        }
+        private void StartCountdown(int seconds)
+        {
+            timeLeft = seconds; 
+            UpdateLabelTime();
+            timer_Lose.Start();
+        }
+        private void timer_Lose_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                timeLeft--; 
+                UpdateLabelTime();
+            }
+            else
+            {
+                timer_Lose.Stop();
+                MessageBox.Show("Time's up!");
+            }
+        }
+        
+        private void UpdateLabelTime()
+        {
+            int minutes = timeLeft / 60;
+            int seconds = timeLeft % 60;
+            lb_timer.Text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         public void DrawChessBoard()
         {
@@ -62,7 +92,9 @@ namespace GameCaroAI.GUI
 
                 if (isYourTurn)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\X.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/X.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
+
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[row, col] = "X";
                     xCount++;
@@ -74,7 +106,7 @@ namespace GameCaroAI.GUI
                     }
                     xFirstMoveRow = row;
                     xFirstMoveCol = col;
-
+                    
                     isYourTurn = false;
                     isComputerTurn = true;
                     MachinePlayO();
@@ -173,6 +205,7 @@ namespace GameCaroAI.GUI
                     UpdateBoard(row, col);
                 }
             }
+            StartCountdown(60);
         }
 
         public void UpdateBoard(int row, int col)
@@ -181,8 +214,10 @@ namespace GameCaroAI.GUI
             {
                 if (c is Guna2ButtonWithPosition btn && btn.Row == row && btn.Col == col)
                 {
-                    btn.BackgroundImage = Image.FromFile("D:\\Code_C#\\WinForm\\GameCaroAI\\GameCaroAI\\Assess\\Images\\O.png");
+                    string imagePath = Path.Combine(Application.StartupPath, "Assess/Images/O.png");
+                    btn.BackgroundImage = Image.FromFile(imagePath);
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
+
                     board[row, col] = "O";
                     comCount++;
                     lbl_Computer.Text = "O (Computer): " + comCount.ToString();
@@ -201,33 +236,61 @@ namespace GameCaroAI.GUI
         public int[] FindBestMove()
         {
             int[] bestMove = new int[2];
+            int alpha = int.MinValue;
+            int beta = int.MaxValue;
             int bestScore = int.MinValue;
+
+            List<int[]> possibleMoves = GeneratePossibleMoves(); // Tạo danh sách các nước đi có thể
+
+            foreach (int[] move in possibleMoves)
+            {
+                int i = move[0];
+                int j = move[1];
+
+                // Thử thực hiện nước đi và đánh giá
+                board[i, j] = "O";
+                int score = Minimax_AlphaBeta(board, 0, alpha, beta, false);
+                board[i, j] = null;
+
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    bestMove[0] = i;
+                    bestMove[1] = j;
+                }
+            }
+            return bestMove;
+        }
+
+        public List<int[]> GeneratePossibleMoves()
+        {
+            List<int[]> possibleMoves = new List<int[]>();
+
             for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
             {
                 for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
                 {
                     if (board[i, j] == null)
                     {
-                        board[i, j] = "O";
-                        int score = Minimax(board, 0, false);
-                        board[i, j] = null;
-                        if (score > bestScore)
-                        {
-                            bestScore = score;
-                            bestMove[0] = i;
-                            bestMove[1] = j;
-                        }
+                        possibleMoves.Add(new int[] { i, j });
                     }
                 }
             }
-            return bestMove;
+
+            return possibleMoves;
         }
-        public int Minimax(string[,] board, int depth, bool isMaximizing)
+
+        // Các phần còn lại của code giữ nguyên
+
+
+
+        public int Minimax_AlphaBeta(string[,] board, int depth, int alpha, int beta, bool isMaximizing)
         {
             if (depth == MAX_DEPTH || IsGameOver(board))
             {
                 return Evaluate(board, "O");
             }
+
             if (isMaximizing)
             {
                 int bestScore = int.MinValue;
@@ -238,11 +301,15 @@ namespace GameCaroAI.GUI
                         if (board[i, j] == null)
                         {
                             board[i, j] = "O";
-                            int score = Minimax(board, depth + 1, false);
+                            int score = Minimax_AlphaBeta(board, depth + 1, alpha, beta, false);
                             board[i, j] = null;
                             bestScore = Math.Max(score, bestScore);
+                            alpha = Math.Max(alpha, bestScore);
+                            if (beta <= alpha)
+                            {
+                                break;
+                            }
                         }
-
                     }
                 }
                 return bestScore;
@@ -254,17 +321,26 @@ namespace GameCaroAI.GUI
                 {
                     for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
                     {
-                        board[i, j] = "X";
-                        int score = Minimax(board, depth + 1, true);
-                        board[i, j] = null;
-                        bestScore = Math.Min(score, bestScore);
+                        if (board[i, j] == null)
+                        {
+                            board[i, j] = "X";
+                            int score = Minimax_AlphaBeta(board, depth + 1, alpha, beta, true);
+                            board[i, j] = null;
+                            bestScore = Math.Min(score, bestScore);
+                            beta = Math.Min(beta, bestScore);
+                            if (beta <= alpha)
+                            {
+                                break;
+                            }
+                        }
                     }
                 }
                 return bestScore;
             }
         }
 
-        private int Evaluate(string[,] board, string player)
+
+        /*public int Evaluate(string[,] board, string player)
         {
             int score = 0;
 
@@ -305,10 +381,219 @@ namespace GameCaroAI.GUI
             }
 
             return score;
+        }*/
+        public int Evaluate(string[,] board, string player)
+        {
+            int score = 0;
+
+            // Đánh giá các hàng ngang
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            {
+                for (int j = 0; j <= Helpers.CHESS_BOARD_WIDTH - 5; j++)
+                {
+                    score += EvaluateLine(board, player, i, j, 0, 1); // Hàng ngang
+                }
+            }
+
+            // Đánh giá các hàng dọc
+            for (int i = 0; i <= Helpers.CHESS_BOARD_HEIGHT - 5; i++)
+            {
+                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
+                {
+                    score += EvaluateLine(board, player, i, j, 1, 0); // Hàng dọc
+                }
+            }
+
+            // Đánh giá các đường chéo chính
+            for (int i = 0; i <= Helpers.CHESS_BOARD_HEIGHT - 5; i++)
+            {
+                for (int j = 0; j <= Helpers.CHESS_BOARD_WIDTH - 5; j++)
+                {
+                    score += EvaluateLine(board, player, i, j, 1, 1); // Đường chéo chính
+                }
+            }
+
+            // Đánh giá các đường chéo phụ
+            for (int i = 4; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            {
+                for (int j = 0; j <= Helpers.CHESS_BOARD_WIDTH - 5; j++)
+                {
+                    score += EvaluateLine(board, player, i, j, -1, 1); // Đường chéo phụ
+                }
+            }
+
+            // Đánh giá khả năng tấn công và phòng ngự, ưu tiên nước đi gần trung tâm và tạo chuỗi
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            {
+                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
+                {
+                    if (board[i, j] == null)
+                    {
+                        board[i, j] = player;
+                        score += EvaluateDefenseAndAttack(board, i, j, player);
+                        board[i, j] = null;
+                    }
+                }
+            }
+
+            // Đánh giá đồng đội và đối thủ
+            int playerCount = CountPieces(board, player);
+            int opponentCount = CountPieces(board, GetOpponent(player));
+
+            // Đánh giá trạng thái của bảng cờ dựa trên số lượng quân cờ của mỗi đội
+            score += (playerCount - opponentCount) * 10; // Tăng điểm nếu máy kiểm soát nhiều quân cờ hơn
+
+            return score;
+        }
+        // Hàm đánh giá phòng ngự và tấn công, ưu tiên nước đi gần trung tâm và tạo chuỗi
+        private int EvaluateDefenseAndAttack(string[,] board, int row, int col, string player)
+        {
+            int score = 0;
+            int centerRow = Helpers.CHESS_BOARD_HEIGHT / 2;
+            int centerCol = Helpers.CHESS_BOARD_WIDTH / 2;
+            int distanceToCenter = Math.Abs(centerRow - row) + Math.Abs(centerCol - col);
+
+            // Ưu tiên nước đi gần trung tâm
+            if (distanceToCenter != 0)
+            {
+                score += (int)(10 / distanceToCenter);
+            }
+            else
+            {
+                // Xử lý trường hợp khi distanceToCenter bằng 0
+                // Ví dụ: Gán một giá trị mặc định
+                score += 0; // Ví dụ: Không cộng điểm nếu distanceToCenter bằng 0
+            }
+
+
+            // Ưu tiên các nước đi tạo thành chuỗi
+            if (IsPotentialWinningMove(board, row, col, player))
+                score += 1000;
+
+            // Kiểm tra khả năng tấn công và phòng ngự
+            if (IsAttackingMove(board, row, col, player))
+                score += 500;
+            else if (IsDefendingMove(board, row, col, player))
+                score += 100;
+
+            return score;
+        }
+        private int CountPieces(string[,] board, string player)
+        {
+            int count = 0;
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            {
+                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
+                {
+                    if (board[i, j] == player)
+                        count++;
+                }
+            }
+            return count;
+        }
+        // Kiểm tra xem nước đi có tiềm năng tạo thành chuỗi không
+        private bool IsPotentialWinningMove(string[,] board, int row, int col, string player)
+        {
+            return IsPotentialWinningLine(board, player, row, col, 0, 1) || // Hàng ngang
+                   IsPotentialWinningLine(board, player, row, col, 1, 0) || // Hàng dọc
+                   IsPotentialWinningLine(board, player, row, col, 1, 1) || // Đường chéo chính
+                   IsPotentialWinningLine(board, player, row, col, -1, 1);  // Đường chéo phụ
         }
 
+        // Kiểm tra xem nước đi có tạo cơ hội tấn công không
+        private bool IsAttackingMove(string[,] board, int row, int col, string player)
+        {
+            return IsPotentialAttackingLine(board, player, row, col, 0, 1) || // Hàng ngang
+                   IsPotentialAttackingLine(board, player, row, col, 1, 0) || // Hàng dọc
+                   IsPotentialAttackingLine(board, player, row, col, 1, 1) || // Đường chéo chính
+                   IsPotentialAttackingLine(board, player, row, col, -1, 1);  // Đường chéo phụ
+        }
+
+        // Kiểm tra xem nước đi có ngăn chặn đối thủ chiến thắng không
+        private bool IsDefendingMove(string[,] board, int row, int col, string player)
+        {
+            return IsPotentialDefendingLine(board, player, row, col, 0, 1) || // Hàng ngang
+                   IsPotentialDefendingLine(board, player, row, col, 1, 0) || // Hàng dọc
+                   IsPotentialDefendingLine(board, player, row, col, 1, 1) || // Đường chéo chính
+                   IsPotentialDefendingLine(board, player, row, col, -1, 1);  // Đường chéo phụ
+        }
+
+        // Hàm kiểm tra hàng có thể tạo thành chuỗi
+        private bool IsPotentialWinningLine(string[,] board, string player, int row, int col, int dRow, int dCol)
+        {
+            int count = 0;
+            for (int i = -4; i <= 4; i++)
+            {
+                int r = row + i * dRow;
+                int c = col + i * dCol;
+                if (r >= 0 && r < Helpers.CHESS_BOARD_HEIGHT && c >= 0 && c < Helpers.CHESS_BOARD_WIDTH)
+                {
+                    if (board[r, c] == player || board[r, c] == null)
+                        count++;
+                }
+            }
+            return count >= 5;
+        }
+
+        // Hàm kiểm tra hàng có thể tạo cơ hội tấn công
+        private bool IsPotentialAttackingLine(string[,] board, string player, int row, int col, int dRow, int dCol)
+        {
+            int countPlayer = 0;
+            int countOpponent = 0;
+            for (int i = -4; i <= 4; i++)
+            {
+                int r = row + i * dRow;
+                int c = col + i * dCol;
+                if (r >= 0 && r < Helpers.CHESS_BOARD_HEIGHT && c >= 0 && c < Helpers.CHESS_BOARD_WIDTH)
+                {
+                    if (board[r, c] == player)
+                        countPlayer++;
+                    else if (board[r, c] != null)
+                        countOpponent++;
+                }
+            }
+            return countPlayer == 4 && countOpponent == 0;
+        }
+
+        // Hàm kiểm tra hàng có thể tạo cơ hội phòng ngự
+        private bool IsPotentialDefendingLine(string[,] board, string player, int row, int col, int dRow, int dCol)
+        {
+            int countPlayer = 0;
+            int countOpponent = 0;
+            for (int i = -4; i <= 4; i++)
+            {
+                int r = row + i * dRow;
+                int c = col + i * dCol;
+                if (r >= 0 && r < Helpers.CHESS_BOARD_HEIGHT && c >= 0 && c < Helpers.CHESS_BOARD_WIDTH)
+                {
+                    if (board[r, c] == player)
+                        countPlayer++;
+                    else if (board[r, c] != null)
+                        countOpponent++;
+                }
+            }
+            return countOpponent == 4 && countPlayer == 0;
+        }
+        // Lấy thông tin đối thủ của một người chơi
+        public string GetOpponent(string player)
+        {
+            if (player == "X")
+            {
+                return "O";
+            }
+            else if (player == "O")
+            {
+                return "X";
+            }
+            else
+            {
+                throw new ArgumentException("Invalid player");
+            }
+        }
+
+
         // Hàm đánh giá cho từng dãy liên tiếp
-        private int EvaluateLine(string[,] board, string player, int row, int col, int dRow, int dCol)
+        public int EvaluateLine(string[,] board, string player, int row, int col, int dRow, int dCol)
         {
             int score = 0;
             int playerCount = 0; // Số lượng ô đã được chiếm bởi người chơi hiện tại
@@ -355,19 +640,22 @@ namespace GameCaroAI.GUI
 
         private bool IsGameOver(string[,] board)
         {
-            /*for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            // Kiểm tra bàn cờ đầy
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
             {
                 for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
                 {
                     if (board[i, j] == null)
                     {
-                        return false;
+                        return true;
+                        
                     }
                 }
-            }*/
-            return true;
+            }
+            MessageBox.Show("Cờ hòa !");
+            return false;
         }
-        private bool CheckWinner(int row, int col)
+        public bool CheckWinner(int row, int col)
         {
             string player = isYourTurn ? "X" : "O";
 
@@ -456,13 +744,7 @@ namespace GameCaroAI.GUI
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?",
-                                    "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-                this.Close();
-            }
+            this.Close();
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -475,6 +757,16 @@ namespace GameCaroAI.GUI
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void time_Instruction_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Undo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

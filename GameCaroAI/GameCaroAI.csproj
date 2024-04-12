@@ -33,13 +33,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu.UI.WinForms.1.5.3">
+      <HintPath>..\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuColorTransition">
+      <HintPath>..\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuColorTransition.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuImageButton">
+      <HintPath>..\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuImageButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
+      <HintPath>..\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSnackbar">
+      <HintPath>..\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuSnackbar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -94,7 +114,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\Debug\GameCaroAI.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -111,12 +133,46 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Assess\Icon\iconCaro_1.ico" />
-    <Content Include="Assess\Images\Caro.png" />
-    <Content Include="Assess\Images\iconCaro.png" />
-    <Content Include="Assess\Images\Welcome.png" />
-    <Content Include="Assess\Images\O.png" />
-    <Content Include="Assess\Images\X.png" />
+    <Content Include="bin\Debug\Assess\Icon\iconCaro_1.ico" />
+    <Content Include="bin\Debug\Assess\Images\Caro.png" />
+    <Content Include="bin\Debug\Assess\Images\iconCaro.png" />
+    <Content Include="bin\Debug\Assess\Images\Khungad.png" />
+    <Content Include="bin\Debug\Assess\Images\mũitengo.png" />
+    <Content Include="bin\Debug\Assess\Images\O.png" />
+    <Content Include="bin\Debug\Assess\Images\timer.png" />
+    <Content Include="bin\Debug\Assess\Images\unnamed.png" />
+    <Content Include="bin\Debug\Assess\Images\Welcome.png" />
+    <Content Include="bin\Debug\Assess\Images\X.png" />
+    <Content Include="bin\Debug\Bunifu.Licensing.dll" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.1.5.3.dll" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.1.5.3.xml" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll" />
+    <Content Include="bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml" />
+    <Content Include="bin\Debug\Bunifu_UI_v1.5.3.dll" />
+    <Content Include="bin\Debug\GameCaroAI.exe" />
+    <Content Include="bin\Debug\GameCaroAI.pdb" />
+    <Content Include="bin\Debug\Guna.UI2.dll" />
+    <Content Include="Resources\timer.png" />
+    <None Include="Resources\Khungad2.png" />
+    <None Include="Resources\Khungad1.png" />
+    <None Include="Resources\Khungad.png" />
+    <None Include="Resources\khung2.png" />
+    <None Include="Resources\X.png" />
+    <None Include="Resources\mũitengo1.png" />
+    <None Include="Resources\khung1.png" />
+    <None Include="Resources\images.png" />
+    <None Include="Resources\mũitengo.png" />
+    <None Include="Resources\khung.png" />
+    <None Include="Resources\khunganh.png" />
+    <None Include="Resources\tải xuống.jfif" />
+    <None Include="Resources\unnamed.png" />
+    <None Include="Resources\gameX%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
