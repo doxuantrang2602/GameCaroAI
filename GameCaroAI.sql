@@ -3,12 +3,38 @@ go
 use GameCaroAI
 go
 
-create table Rules
+create table Player
 (
-	RuleID nvarchar(20) not null,
-	RuleName nvarchar(100),
-	constraint PK_Rules primary key(RuleID)
+	PlayerID nvarchar(30) primary key,
+	Username nvarchar(50) not null,
+	Password nvarchar(100) not null,
+	LastLogin datetime,
+	CreateAt datetime default getdate(),
+	UpdateAt datetime,
 )
 go
 
--- Chưa thêm rì
+create table Game
+(
+	GameID nvarchar(50) primary key,
+	PlayerID nvarchar(30),
+	Score int,
+	Result nvarchar(30),
+	GameStatus int,
+	CreateAt datetime default getdate(),
+	UpdateAt datetime,
+
+	constraint FK_Game_PlayerID foreign key(PlayerID) references Player(PlayerID)
+)
+go
+
+create or alter trigger UpdatePlayer on Player
+after update 
+as
+begin
+    set nocount on
+    update Player
+    set UpdateAt = getdate()
+    where PlayerID IN (select distinct PlayerID from inserted)
+end
+go

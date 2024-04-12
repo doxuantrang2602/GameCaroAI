@@ -42,14 +42,11 @@ namespace GameCaroAI.GUI
             this.btn_Redo = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_Undo = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_newGame = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.pn_Intruction = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pn_ChessBoard = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.time_Instruction = new System.Windows.Forms.Timer(this.components);
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lb_timer = new System.Windows.Forms.Label();
             this.timer_Lose = new System.Windows.Forms.Timer(this.components);
-            this.pn_Intruction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,31 +154,6 @@ namespace GameCaroAI.GUI
             this.btn_newGame.Text = "New Game";
             this.btn_newGame.Click += new System.EventHandler(this.btn_newGame_Click);
             // 
-            // pn_Intruction
-            // 
-            this.pn_Intruction.BackColor = System.Drawing.Color.Transparent;
-            this.pn_Intruction.BorderColor = System.Drawing.Color.Black;
-            this.pn_Intruction.BorderRadius = 20;
-            this.pn_Intruction.BorderThickness = 1;
-            this.pn_Intruction.Controls.Add(this.guna2HtmlLabel1);
-            this.pn_Intruction.FillColor = System.Drawing.Color.PapayaWhip;
-            this.pn_Intruction.FillColor2 = System.Drawing.Color.Transparent;
-            this.pn_Intruction.Location = new System.Drawing.Point(21, 690);
-            this.pn_Intruction.Name = "pn_Intruction";
-            this.pn_Intruction.Size = new System.Drawing.Size(1056, 75);
-            this.pn_Intruction.TabIndex = 1;
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Ivory;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(13, 6);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(136, 31);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Hướng dẫn:";
-            // 
             // pn_ChessBoard
             // 
             this.pn_ChessBoard.BackColor = System.Drawing.Color.White;
@@ -241,7 +213,6 @@ namespace GameCaroAI.GUI
             this.Controls.Add(this.lbl_Computer);
             this.Controls.Add(this.pn_ChessBoard);
             this.Controls.Add(this.lbl_You);
-            this.Controls.Add(this.pn_Intruction);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_Redo);
             this.Controls.Add(this.btn_newGame);
@@ -255,8 +226,6 @@ namespace GameCaroAI.GUI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Cờ Caro";
             this.TransparencyKey = System.Drawing.Color.WhiteSmoke;
-            this.pn_Intruction.ResumeLayout(false);
-            this.pn_Intruction.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -265,8 +234,6 @@ namespace GameCaroAI.GUI
        
         #endregion
         public Guna.UI2.WinForms.Guna2GradientPanel pn_ChessBoard;
-        private Guna.UI2.WinForms.Guna2GradientPanel pn_Intruction;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2GradientButton btn_newGame;
         private Guna.UI2.WinForms.Guna2GradientButton btn_Redo;
         private Guna.UI2.WinForms.Guna2GradientButton btn_Undo;
