@@ -43,7 +43,6 @@ namespace GameCaroAI.GUI
             this.btn_Undo = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_newGame = new Guna.UI2.WinForms.Guna2GradientButton();
             this.pn_ChessBoard = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.time_Instruction = new System.Windows.Forms.Timer(this.components);
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lb_timer = new System.Windows.Forms.Label();
             this.timer_Lose = new System.Windows.Forms.Timer(this.components);
@@ -57,7 +56,7 @@ namespace GameCaroAI.GUI
             this.lbl_Computer.ForeColor = System.Drawing.Color.Snow;
             this.lbl_Computer.Location = new System.Drawing.Point(212, 81);
             this.lbl_Computer.Name = "lbl_Computer";
-            this.lbl_Computer.Size = new System.Drawing.Size(117, 24);
+            this.lbl_Computer.Size = new System.Drawing.Size(156, 31);
             this.lbl_Computer.TabIndex = 2;
             this.lbl_Computer.Text = "O (Computer):";
             // 
@@ -68,7 +67,7 @@ namespace GameCaroAI.GUI
             this.lbl_You.ForeColor = System.Drawing.Color.Lavender;
             this.lbl_You.Location = new System.Drawing.Point(212, 52);
             this.lbl_You.Name = "lbl_You";
-            this.lbl_You.Size = new System.Drawing.Size(69, 24);
+            this.lbl_You.Size = new System.Drawing.Size(91, 31);
             this.lbl_You.TabIndex = 2;
             this.lbl_You.Text = "X (You):";
             // 
@@ -112,6 +111,7 @@ namespace GameCaroAI.GUI
             this.btn_Redo.Size = new System.Drawing.Size(96, 45);
             this.btn_Redo.TabIndex = 1;
             this.btn_Redo.Text = "Redo";
+            this.btn_Redo.Click += new System.EventHandler(this.btn_Redo_Click);
             // 
             // btn_Undo
             // 
@@ -154,7 +154,7 @@ namespace GameCaroAI.GUI
             this.btn_newGame.TabIndex = 1;
             this.btn_newGame.Text = "New Game";
             this.btn_newGame.Click += new System.EventHandler(this.btn_newGame_Click);
-            //
+            // 
             // pn_ChessBoard
             // 
             this.pn_ChessBoard.BackColor = System.Drawing.Color.White;
@@ -165,10 +165,6 @@ namespace GameCaroAI.GUI
             this.pn_ChessBoard.Name = "pn_ChessBoard";
             this.pn_ChessBoard.Size = new System.Drawing.Size(691, 571);
             this.pn_ChessBoard.TabIndex = 3;
-            // 
-            // time_Instruction
-            // 
-            this.time_Instruction.Tick += new System.EventHandler(this.time_Instruction_Tick);
             // 
             // guna2CirclePictureBox1
             // 
@@ -192,7 +188,7 @@ namespace GameCaroAI.GUI
             this.lb_timer.ForeColor = System.Drawing.Color.MistyRose;
             this.lb_timer.Location = new System.Drawing.Point(720, 65);
             this.lb_timer.Name = "lb_timer";
-            this.lb_timer.Size = new System.Drawing.Size(67, 25);
+            this.lb_timer.Size = new System.Drawing.Size(81, 29);
             this.lb_timer.TabIndex = 5;
             this.lb_timer.Text = "00:00";
             // 
@@ -203,7 +199,7 @@ namespace GameCaroAI.GUI
             // 
             // FrmAI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImage = global::GameCaroAI.Properties.Resources.Khungad2;
@@ -241,7 +237,6 @@ namespace GameCaroAI.GUI
         private Guna.UI2.WinForms.Guna2GradientButton btn_back;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_Computer;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_You;
-        private System.Windows.Forms.Timer time_Instruction;
         private Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lb_timer;
         private System.Windows.Forms.Timer timer_Lose;

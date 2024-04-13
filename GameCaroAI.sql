@@ -28,6 +28,18 @@ create table Game
 )
 go
 
+create or alter procedure CheckLogin
+(	
+	@Username nvarchar(50),
+	@Password nvarchar(100)
+)
+as
+begin
+	select * from Player	
+	where Username = @Username and Password = @Password
+end
+go
+
 create or alter trigger UpdatePlayer on Player
 after update 
 as

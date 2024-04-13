@@ -115,6 +115,12 @@
     <EmbeddedResource Include="GUI\Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Frm_Signin.resx">
+      <DependentUpon>Frm_Signin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Frm_Signup.resx">
+      <DependentUpon>Frm_Signup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frm_TwoPlayers.resx">
       <DependentUpon>Frm_TwoPlayers.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,13 +152,17 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="bin\Debug\Assess\Icon\iconCaro_1.ico" />
+    <Content Include="bin\Debug\Assess\Icon\IconLogin.ico" />
+    <Content Include="bin\Debug\Assess\Icon\Signin.ico" />
     <Content Include="bin\Debug\Assess\Images\Caro.png" />
     <Content Include="bin\Debug\Assess\Images\iconCaro.png" />
     <Content Include="bin\Debug\Assess\Images\Khungad.png" />
     <Content Include="bin\Debug\Assess\Images\mũitengo.png" />
     <Content Include="bin\Debug\Assess\Images\O.png" />
+    <Content Include="bin\Debug\Assess\Images\Password.png" />
     <Content Include="bin\Debug\Assess\Images\timer.png" />
     <Content Include="bin\Debug\Assess\Images\unnamed.png" />
+    <Content Include="bin\Debug\Assess\Images\Username.png" />
     <Content Include="bin\Debug\Assess\Images\Welcome.png" />
     <Content Include="bin\Debug\Assess\Images\X.png" />
     <Content Include="bin\Debug\Bunifu.Licensing.dll" />

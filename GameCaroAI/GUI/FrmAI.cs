@@ -31,10 +31,11 @@ namespace GameCaroAI.GUI
         {
             InitializeComponent();
             DrawChessBoard();
-            StartCountdown(60);
+            StartCountdown(5);
         }
         private void StartCountdown(int seconds)
         {
+            timer_Lose.Stop();
             timeLeft = seconds; 
             UpdateLabelTime();
             timer_Lose.Start();
@@ -280,10 +281,6 @@ namespace GameCaroAI.GUI
             return possibleMoves;
         }
 
-        // Các phần còn lại của code giữ nguyên
-
-
-
         public int Minimax_AlphaBeta(string[,] board, int depth, int alpha, int beta, bool isMaximizing)
         {
             if (depth == MAX_DEPTH || IsGameOver(board))
@@ -338,50 +335,6 @@ namespace GameCaroAI.GUI
                 return bestScore;
             }
         }
-
-
-        /*public int Evaluate(string[,] board, string player)
-        {
-            int score = 0;
-
-            // Đánh giá các hàng ngang
-            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
-            {
-                for (int j = 0; j <= Helpers.CHESS_BOARD_WIDTH - 5; j++)
-                {
-                    score += EvaluateLine(board, player, i, j, 0, 1); // Hàng ngang
-                }
-            }
-
-            // Đánh giá các hàng dọc
-            for (int i = 0; i <= Helpers.CHESS_BOARD_HEIGHT - 5; i++)
-            {
-                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
-                {
-                    score += EvaluateLine(board, player, i, j, 1, 0); // Hàng dọc
-                }
-            }
-
-            // Đánh giá các đường chéo chính
-            for (int i = 0; i <= Helpers.CHESS_BOARD_HEIGHT - 5; i++)
-            {
-                for (int j = 0; j <= Helpers.CHESS_BOARD_WIDTH - 5; j++)
-                {
-                    score += EvaluateLine(board, player, i, j, 1, 1); // Đường chéo chính
-                }
-            }
-
-            // Đánh giá các đường chéo phụ
-            for (int i = 4; i < Helpers.CHESS_BOARD_HEIGHT; i++)
-            {
-                for (int j = 0; j <= Helpers.CHESS_BOARD_WIDTH - 5; j++)
-                {
-                    score += EvaluateLine(board, player, i, j, -1, 1); // Đường chéo phụ
-                }
-            }
-
-            return score;
-        }*/
         public int Evaluate(string[,] board, string player)
         {
             int score = 0;
@@ -765,6 +718,11 @@ namespace GameCaroAI.GUI
         }
 
         private void btn_Undo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Redo_Click(object sender, EventArgs e)
         {
 
         }

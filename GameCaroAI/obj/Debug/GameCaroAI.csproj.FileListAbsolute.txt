@@ -62,3 +62,5 @@ D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CoreCompileInputs.cache
 D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.csproj.CopyComplete
 D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.exe
 D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Signin.resources
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Signup.resources
