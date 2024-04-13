@@ -26,6 +26,8 @@ namespace GameCaroAI.GUI
         public string[,] board = new string[Helpers.CHESS_BOARD_HEIGHT, Helpers.CHESS_BOARD_WIDTH];
         public const int WIN_SCORE = -10000000;
         private int timeLeft;
+        private Stack<Move> undoStack = new Stack<Move>();
+        private Stack<Move> redoStack = new Stack<Move>();
 
         public FrmAI()
         {
@@ -107,7 +109,10 @@ namespace GameCaroAI.GUI
                     }
                     xFirstMoveRow = row;
                     xFirstMoveCol = col;
-                    
+               
+                    undoStack.Push(new Move(row, col, "X"));
+                    redoStack.Clear();
+
                     isYourTurn = false;
                     isComputerTurn = true;
                     MachinePlayO();
@@ -227,6 +232,8 @@ namespace GameCaroAI.GUI
                         MessageBox.Show("COMPUTER WINS!");
                         return;
                     }
+                    undoStack.Push(new Move(row, col, "O")); 
+                    redoStack.Clear();
                     isYourTurn = true;
                     isComputerTurn = false;
                     return;
@@ -711,20 +718,69 @@ namespace GameCaroAI.GUI
         {
             this.Hide();
         }
-
-        private void time_Instruction_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Undo_Click(object sender, EventArgs e)
         {
-
+            if (undoStack.Count >= 2) 
+            {
+                for (int i = 0; i < 2; i++) // Quay lại 2 nước đi
+                {
+                    Move lastMove = undoStack.Pop();
+                    redoStack.Push(new Move(lastMove.Row, lastMove.Col, board[lastMove.Row, lastMove.Col])); // Đẩy vào redoStack
+                    board[lastMove.Row, lastMove.Col] = null; // Xóa nước đi khỏi bàn cờ
+                    UpdateButtonUI(lastMove.Row, lastMove.Col, null); // Cập nhật UI của nút
+                }
+                TogglePlayerTurn(); // Đổi lượt chơi
+            }
+            else
+            {
+                MessageBox.Show("Không thể thực hiện undo!");
+            }
         }
-
         private void btn_Redo_Click(object sender, EventArgs e)
         {
-
+            if (redoStack.Count >= 2) 
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    Move nextMove = redoStack.Pop();
+                    undoStack.Push(new Move(nextMove.Row, nextMove.Col, board[nextMove.Row, nextMove.Col]));
+                    board[nextMove.Row, nextMove.Col] = nextMove.Player; 
+                    UpdateButtonUI(nextMove.Row, nextMove.Col, nextMove.Player);
+                }
+                TogglePlayerTurn(); 
+            }
+            else
+            {
+                MessageBox.Show("Không còn nước đi để Redo!");
+            }
         }
+
+
+        private void TogglePlayerTurn()
+        {
+            isYourTurn = !isYourTurn;
+            isComputerTurn = !isComputerTurn;
+        }
+        private void UpdateButtonUI(int row, int col, string player)
+        {
+            foreach (Control c in pn_ChessBoard.Controls)
+            {
+                if (c is Guna2ButtonWithPosition btn && btn.Row == row && btn.Col == col)
+                {
+                    if (player == null)
+                    {
+                        btn.BackgroundImage = null; 
+                    }
+                    else
+                    {
+                        string imagePath = Path.Combine(Application.StartupPath, $"Assess\\Images\\{player}.png");
+                        btn.BackgroundImage = Image.FromFile(imagePath);
+                        btn.BackgroundImageLayout = ImageLayout.Stretch;
+                    }
+                    break;
+                }
+            }
+        }
+
     }
 }

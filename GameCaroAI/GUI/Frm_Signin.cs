@@ -48,6 +48,11 @@ namespace GameCaroAI.GUI
         {
             string userName = txb_Username.Text;
             string password = txb_Password.Text;
+            if(userName == "" || password == "")
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin !");
+                return;
+            }
             string hashedPassword = HashPassword(password);
 
             Dictionary<string, object> param = new Dictionary<string, object>()
@@ -103,7 +108,6 @@ namespace GameCaroAI.GUI
                 this.Location = Point.Add(dragFormPoint, new System.Drawing.Size(diff));
             }
         }
-
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             dragging = true;

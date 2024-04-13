@@ -80,20 +80,12 @@ namespace GameCaroAI.GUI
                 this.Close();
             }
         }
-
-		private void pn_LoginRight_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void guna2ImageButton1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void guna2ImageButton1_Click_1(object sender, EventArgs e)
-		{
-
-		}
-	}
+        private void btn_backToSignIn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Frm_Signin frm_Signin = new Frm_Signin();
+            frm_Signin.ShowDialog();
+            this.Close();
+        }
+    }
 }

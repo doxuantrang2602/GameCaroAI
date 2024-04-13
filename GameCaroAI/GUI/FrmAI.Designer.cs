@@ -1,5 +1,6 @@
 ﻿using GameCaroAI.Classes;
 using Guna.UI2.WinForms;
+using System;
 using System.Drawing;
 
 namespace GameCaroAI.GUI
@@ -228,7 +229,6 @@ namespace GameCaroAI.GUI
             this.PerformLayout();
 
         }
-       
         #endregion
         public Guna.UI2.WinForms.Guna2GradientPanel pn_ChessBoard;
         private Guna.UI2.WinForms.Guna2GradientButton btn_newGame;
