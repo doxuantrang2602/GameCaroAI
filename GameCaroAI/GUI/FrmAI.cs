@@ -33,7 +33,6 @@ namespace GameCaroAI.GUI
         {
             InitializeComponent();
             DrawChessBoard();
-            StartCountdown(5);
         }
         private void StartCountdown(int seconds)
         {

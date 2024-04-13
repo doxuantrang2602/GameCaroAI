@@ -47,6 +47,8 @@ namespace GameCaroAI.GUI
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lb_timer = new System.Windows.Forms.Label();
             this.timer_Lose = new System.Windows.Forms.Timer(this.components);
+            this.lb_loseCount = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lb_winCount = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,6 +200,28 @@ namespace GameCaroAI.GUI
             this.timer_Lose.Interval = 1000;
             this.timer_Lose.Tick += new System.EventHandler(this.timer_Lose_Tick);
             // 
+            // lb_loseCount
+            // 
+            this.lb_loseCount.BackColor = System.Drawing.Color.Transparent;
+            this.lb_loseCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_loseCount.ForeColor = System.Drawing.Color.Snow;
+            this.lb_loseCount.Location = new System.Drawing.Point(212, 726);
+            this.lb_loseCount.Name = "lb_loseCount";
+            this.lb_loseCount.Size = new System.Drawing.Size(133, 31);
+            this.lb_loseCount.TabIndex = 8;
+            this.lb_loseCount.Text = "Số ván thua:";
+            // 
+            // lb_winCount
+            // 
+            this.lb_winCount.BackColor = System.Drawing.Color.Transparent;
+            this.lb_winCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_winCount.ForeColor = System.Drawing.Color.Lavender;
+            this.lb_winCount.Location = new System.Drawing.Point(212, 697);
+            this.lb_winCount.Name = "lb_winCount";
+            this.lb_winCount.Size = new System.Drawing.Size(147, 31);
+            this.lb_winCount.TabIndex = 9;
+            this.lb_winCount.Text = "Số ván thắng:";
+            // 
             // FrmAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -206,6 +230,8 @@ namespace GameCaroAI.GUI
             this.BackgroundImage = global::GameCaroAI.Properties.Resources.Khungad2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1105, 843);
+            this.Controls.Add(this.lb_loseCount);
+            this.Controls.Add(this.lb_winCount);
             this.Controls.Add(this.lb_timer);
             this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.lbl_Computer);
@@ -240,5 +266,7 @@ namespace GameCaroAI.GUI
         private Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lb_timer;
         private System.Windows.Forms.Timer timer_Lose;
+        private Guna2HtmlLabel lb_loseCount;
+        private Guna2HtmlLabel lb_winCount;
     }
 }

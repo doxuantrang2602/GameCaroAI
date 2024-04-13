@@ -11,7 +11,7 @@ namespace GameCaroAI.Classes
         public static int CHESS_WIDTH = 30;
         public static int CHESS_HEIGHT = 30;
 
-        public static int CHESS_BOARD_WIDTH = 25;
-        public static int CHESS_BOARD_HEIGHT = 22;
+        public static int CHESS_BOARD_WIDTH = 23;
+        public static int CHESS_BOARD_HEIGHT = 19;
     }
 }

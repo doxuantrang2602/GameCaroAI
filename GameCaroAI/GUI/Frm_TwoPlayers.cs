@@ -164,13 +164,7 @@ namespace GameCaroAI.GUI
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?",
-                                    "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-                this.Close();
-            }
+            this.Close();
         }
 
         private void btn_Undo_Click(object sender, EventArgs e)
