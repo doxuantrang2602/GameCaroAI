@@ -1,9 +1,5 @@
 .vs/GameCaroAI/v17/.suo
 *.cache
-*.cache
-=======
-.vs/GameCaroAI/v17/.suo
-*.cache
 
 *.vsidx
 # Ignore Visual Studio temporary files, build results, and
