@@ -13,7 +13,7 @@ namespace GameCaroAI.Option
         private string[,] board;
         private int maxDepth;
         private const string AI_PIECE = "O";
-        private const string HUMAN_PIECE = "X";
+        private const string PLAYER_PIECE = "X";
 
         public MinimaxAI(string[,] board, int maxDepth)
         {
@@ -80,7 +80,7 @@ namespace GameCaroAI.Option
                 {
                     for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
                     {
-                        board[i, j] = HUMAN_PIECE;
+                        board[i, j] = PLAYER_PIECE;
                         int score = Minimax(board, depth + 1, true);
                         board[i, j] = null;
                         bestScore = Math.Min(score, bestScore);

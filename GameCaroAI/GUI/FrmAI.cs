@@ -30,8 +30,9 @@ namespace GameCaroAI.GUI
         public int timeLeft;
         public Stack<Move> undoStack = new Stack<Move>();
         public Stack<Move> redoStack = new Stack<Move>();
-        public MinimaxAI minimaxAI;
         public RandomAI randomAI;
+        public MinimaxAI minimaxAI;
+        public AlphaBetaAI alphaBetaAI;
         public string playerID = "";
         public FrmAI(int level)
         {
@@ -63,7 +64,7 @@ namespace GameCaroAI.GUI
             }
             else if (level == 2)
             {
-
+                alphaBetaAI = new AlphaBetaAI(board, MAX_DEPTH);
             }
         }
         public void WinLoseCount()
@@ -159,7 +160,7 @@ namespace GameCaroAI.GUI
                 if (xCount == 1 && comCount == 0)
                 {
                     int row, col;
-                    // Góc trên cùng bên trái
+                    // Góc trên cùng bên phải
                     if (xFirstMoveRow == 0 && xFirstMoveCol == Helpers.CHESS_BOARD_WIDTH - 1)
                     {
                         // Đánh vào góc dưới bên trái
@@ -233,10 +234,13 @@ namespace GameCaroAI.GUI
                     if (levelAI == 0)
                     {
                         int[] move = randomAI.findMove();
-                        if (move != null)
+                        int row, col;
+                        do
                         {
-                            UpdateBoard(move[0], move[1]); 
-                        }
+                            row = move[0]; 
+                            col = move[1];   
+                        } while (board[row, col] != null);
+                        UpdateBoard(row, col);
                     }
                     else if(levelAI == 1)
                     {
@@ -252,7 +256,15 @@ namespace GameCaroAI.GUI
                     }   
                     else if (levelAI == 2)
                     {
+                        int[] move = alphaBetaAI.findBestMove();
+                        int row, col;
+                        do
+                        {
+                            row = move[0];
+                            col = move[1];
+                        } while (board[row, col] != null);
 
+                        UpdateBoard(row, col);
                     }
                 }
                 StartCountdown(60);
@@ -292,7 +304,7 @@ namespace GameCaroAI.GUI
         {
             string player = isYourTurn ? "X" : "O";
             // Kiểm tra hàng ngang
-            for (int i = 0; i < Helpers.CHESS_BOARD_WIDTH; i++)
+            for (int i = 0; i < Helpers.CHESS_BOARD_WIDTH-4; i++)
             {
                 bool win = true;
                 for (int j = 0; j < 5; j++)
@@ -307,7 +319,7 @@ namespace GameCaroAI.GUI
             }
 
             // Kiểm tra hàng dọc
-            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT-4; i++)
             {
                 bool win = true;
                 for (int j = 0; j < 5; j++)
