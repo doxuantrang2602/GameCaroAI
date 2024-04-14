@@ -10,21 +10,20 @@ using System.Windows.Forms;
 
 namespace GameCaroAI.GUI
 {
-    public partial class Frm_Login : Form
+    public partial class Frm_Main : Form
     {
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
-        public Frm_Login()
+        public Frm_Main()
         {
             InitializeComponent();
         }
 
         private void btn_VsComputer_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmAI frmAI = new FrmAI();
-            frmAI.ShowDialog();
+            Frm_LevelAI frmLevel = new Frm_LevelAI();
+            frmLevel.ShowDialog();
             this.Show();
         }
         private void btn_TwoPlayer_Click(object sender, EventArgs e)

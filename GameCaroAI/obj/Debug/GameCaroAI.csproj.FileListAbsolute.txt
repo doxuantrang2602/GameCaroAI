@@ -10,7 +10,6 @@ D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.exe
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.FrmAI.resources
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_TwoPlayers.resources
-D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Login.resources
 D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe.config
 D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.exe
 D:\Tài liệu học tập\N3-HK2\Trí tuệ nhân tạo\Project\GameCaroAI\GameCaroAI\bin\Debug\GameCaroAI.pdb
@@ -64,3 +63,5 @@ D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.exe
 D:\AI\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.pdb
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Signin.resources
 D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Signup.resources
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_LevelAI.resources
+D:\Code_C#\WinForm\GameCaroAI\GameCaroAI\obj\Debug\GameCaroAI.GUI.Frm_Main.resources

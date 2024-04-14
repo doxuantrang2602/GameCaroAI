@@ -65,7 +65,7 @@ namespace GameCaroAI.GUI
             {
                 MessageBox.Show("Đăng nhập thành công !");
                 this.Hide();
-                Frm_Login frmMain = new Frm_Login();
+                Frm_Main frmMain = new Frm_Main();
                 frmMain.ShowDialog();
             }
             else

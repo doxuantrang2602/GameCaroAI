@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace GameCaroAI.GUI
 {
-    partial class Frm_Login
+    partial class Frm_Main
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@ namespace GameCaroAI.GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Main));
             this.btn_TwoPlayer = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_PlayOnl = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_VsComputer = new Guna.UI2.WinForms.Guna2GradientButton();
