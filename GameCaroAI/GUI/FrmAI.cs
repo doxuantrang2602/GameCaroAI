@@ -259,7 +259,7 @@ namespace GameCaroAI.GUI
             }
         }
 
-        private void UpdateBoard(int row, int col)
+        public void UpdateBoard(int row, int col)
         {
             foreach (Control c in pn_ChessBoard.Controls)
             {
@@ -277,6 +277,9 @@ namespace GameCaroAI.GUI
                         saveGameResult("Lose");
                         return;
                     }
+                    undoStack.Push(new Move(row, col, "O"));
+                    redoStack.Clear();
+
                     isYourTurn = true;
                     isComputerTurn = false;
                     return;
@@ -392,7 +395,8 @@ namespace GameCaroAI.GUI
                     board[lastMove.Row, lastMove.Col] = null; // Xóa nước đi khỏi bàn cờ
                     UpdateButtonUI(lastMove.Row, lastMove.Col, null); // Cập nhật UI của nút
                 }
-                TogglePlayerTurn(); // Đổi lượt chơi
+                isYourTurn = true;
+                isComputerTurn = false;
             }
             else
             {
@@ -410,17 +414,13 @@ namespace GameCaroAI.GUI
                     board[nextMove.Row, nextMove.Col] = nextMove.Player; 
                     UpdateButtonUI(nextMove.Row, nextMove.Col, nextMove.Player);
                 }
-                TogglePlayerTurn(); 
+                isYourTurn = true;
+                isComputerTurn = false;
             }
             else
             {
                 MessageBox.Show("Không còn nước đi để Redo!");
             }
-        }
-        private void TogglePlayerTurn()
-        {
-            isYourTurn = !isYourTurn;
-            isComputerTurn = !isComputerTurn;
         }
         private void UpdateButtonUI(int row, int col, string player)
         {
