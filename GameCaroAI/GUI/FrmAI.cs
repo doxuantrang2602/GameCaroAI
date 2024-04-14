@@ -9,15 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameCaroAI.Classes;
+using GameCaroAI.Option;
 using Guna.UI2.WinForms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace GameCaroAI.GUI
 {
     public partial class FrmAI : Form
     {
+        DataProcesserTrang dtBase = new DataProcesserTrang();
         public int levelAI;
-        public const int MAX_DEPTH = 3;
+        public const int MAX_DEPTH = 2;
         public bool isYourTurn = true; 
         public bool isComputerTurn = true;
         public int xFirstMoveRow;
@@ -31,12 +32,24 @@ namespace GameCaroAI.GUI
         public Stack<Move> redoStack = new Stack<Move>();
         public MinimaxAI minimaxAI;
         public RandomAI randomAI;
+        public string playerID = "";
         public FrmAI(int level)
         {
             InitializeComponent();
             DrawChessBoard();
             levelAI = level;
             InitializeAI(levelAI);
+            string sqlPlayer = "select PlayerID from Player where Username = @Username";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@Username", PlayerInfo.Username }
+            };
+            DataTable dtPlayer = dtBase.SearchData(sqlPlayer, param);
+            if (dtPlayer.Rows.Count > 0)
+            {
+                playerID = dtPlayer.Rows[0]["PlayerID"].ToString(); ;
+            }
+            WinLoseCount();
         }
         private void InitializeAI(int level)
         {
@@ -53,56 +66,56 @@ namespace GameCaroAI.GUI
 
             }
         }
+        public void WinLoseCount()
+        {
+            string sqlWinCount = "Select count(PlayerID) as WinCount " +
+                            "from Game " +
+                            "where PlayerID = @PlayerID and result = N'Win'";
+            Dictionary<string, object> paramWinCount = new Dictionary<string, object>
+            {
+                {"@PlayerID", playerID},
+            };
+            DataTable dtWin = dtBase.SearchData(sqlWinCount, paramWinCount);
+            int winCount = Convert.ToInt32(dtWin.Rows[0]["WinCount"]);
+            lb_winCount.Text = $"Số trận thắng: {winCount}";
 
-        private void StartCountdown(int seconds)
-        {
-            timer_Lose.Stop();
-            timeLeft = seconds; 
-            UpdateLabelTime();
-            timer_Lose.Start();
-        }
-        private void timer_Lose_Tick(object sender, EventArgs e)
-        {
-            if (timeLeft > 0)
+            string sqlLoseCount = "Select count(PlayerID) as LoseCount " +
+                                  "from Game " +
+                                  "where PlayerID = @PlayerID and result = N'Lose'";
+            Dictionary<string, object> paramLoseCount = new Dictionary<string, object>
             {
-                timeLeft--; 
-                UpdateLabelTime();
-            }
-            else
-            {
-                timer_Lose.Stop();
-                MessageBox.Show("Time's up!");
-            }
+                {"@PlayerID", playerID},
+            };
+            DataTable dtLose = dtBase.SearchData(sqlLoseCount, paramLoseCount);
+            int loseCount = Convert.ToInt32(dtLose.Rows[0]["LoseCount"]);
+            lb_loseCount.Text = $"Số trận thua: {loseCount}";
         }
-        
-        private void UpdateLabelTime()
+        public void saveGameResult(string result)
         {
-            int minutes = timeLeft / 60;
-            int seconds = timeLeft % 60;
-            lb_timer.Text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        }
-        public void DrawChessBoard()
-        {
-            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            if (!string.IsNullOrEmpty(playerID))
             {
-                for(int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
+                string newGameID = dtBase.GenerateGameID();
+                string sqlInsert = "Insert into Game (GameID, PlayerID, Score, Result, GameStatus, CreateAt)" +
+                                   "values (@GameID, @PlayerID, @Score, @Result, @GameStatus, getdate())";
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
                 {
-                    Guna2ButtonWithPosition btn = new Guna2ButtonWithPosition()
-                    {
-                        Width = Helpers.CHESS_WIDTH,
-                        Height = Helpers.CHESS_HEIGHT,
-                        Location = new Point(j* Helpers.CHESS_WIDTH, i*Helpers.CHESS_HEIGHT),
-                        BorderThickness = 1,
-                        BackColor = Color.White,
-                        FillColor = Color.Transparent,
-                        Col = j,
-                        Row = i,
-                    };
-                    pn_ChessBoard.Controls.Add(btn);
-                    btn.Click += Btn_Click;
+                    {"@GameID", newGameID},
+                    {"@PlayerID", playerID},
+                    {"@Score", xCount.ToString()}, 
+                    {"@Result", result},
+                    {"@GameStatus", 1} 
+                };
+                if (dtBase.ChangeData(sqlInsert, parameters))
+                {
+                    MessageBox.Show($"YOU {result.ToUpper()}! Kết quả trận đấu đã được lưu lại");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi lưu kết quả trận đấu");
                 }
             }
         }
+
         private void Btn_Click(object sender, EventArgs e)
         {
             Guna2ButtonWithPosition btn = sender as Guna2ButtonWithPosition;
@@ -121,6 +134,7 @@ namespace GameCaroAI.GUI
                     if (CheckWinner(row, col))
                     {
                         MessageBox.Show("YOU WINS!");
+                        saveGameResult("Win");
                         return;
                     }
                     xFirstMoveRow = row;
@@ -218,7 +232,7 @@ namespace GameCaroAI.GUI
                 {
                     if (levelAI == 0)
                     {
-                        int[] move = randomAI.GetRandomMove();
+                        int[] move = randomAI.findMove();
                         if (move != null)
                         {
                             UpdateBoard(move[0], move[1]); 
@@ -226,7 +240,7 @@ namespace GameCaroAI.GUI
                     }
                     else if(levelAI == 1)
                     {
-                        int[] move = minimaxAI.FindBestMove();
+                        int[] move = minimaxAI.findBestMove();
                         int row, col;
                         do
                         {
@@ -241,6 +255,7 @@ namespace GameCaroAI.GUI
 
                     }
                 }
+                StartCountdown(60);
             }
         }
 
@@ -259,6 +274,7 @@ namespace GameCaroAI.GUI
                     if (CheckWinner(row, col))
                     {
                         MessageBox.Show("COMPUTER WINS!");
+                        saveGameResult("Lose");
                         return;
                     }
                     isYourTurn = true;
@@ -401,8 +417,6 @@ namespace GameCaroAI.GUI
                 MessageBox.Show("Không còn nước đi để Redo!");
             }
         }
-
-
         private void TogglePlayerTurn()
         {
             isYourTurn = !isYourTurn;

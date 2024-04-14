@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameCaroAI.Classes;
 using System.Windows.Forms;
 
-namespace GameCaroAI.Classes
+namespace GameCaroAI.Option
 {
     public class MinimaxAI
     {
@@ -21,7 +21,7 @@ namespace GameCaroAI.Classes
             this.maxDepth = maxDepth;
         }
 
-        public int[] FindBestMove()
+        public int[] findBestMove()
         {
             int bestScore = int.MinValue;
             int[] bestMove = new int[2];

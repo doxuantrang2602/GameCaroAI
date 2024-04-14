@@ -91,5 +91,16 @@ namespace GameCaroAI.Classes
                 return (T)Convert.ChangeType(result, typeof(T));
             }
         }
+        public string GenerateGameID()
+        {
+            string newGameID = "";
+            OpenConnect();
+            using (SqlCommand cmd = new SqlCommand("SELECT 'G' + RIGHT('000' + CAST(ISNULL(MAX(SUBSTRING(GameID, 3, 3)), 0) + 1 AS NVARCHAR(3)), 3) FROM Game", sqlConn))
+            {
+                newGameID = (string)cmd.ExecuteScalar();
+            }
+            CloseConnect();
+            return newGameID;
+        }
     }
 }

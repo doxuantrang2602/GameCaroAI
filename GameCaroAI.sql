@@ -50,3 +50,7 @@ begin
     where PlayerID IN (select distinct PlayerID from inserted)
 end
 go
+
+select count(PlayerID) as WinCount
+from Game
+where PlayerID = N'TK001' and Result = N'Lose'

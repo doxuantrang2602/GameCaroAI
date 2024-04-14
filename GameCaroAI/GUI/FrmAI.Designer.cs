@@ -2,6 +2,7 @@
 using Guna.UI2.WinForms;
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace GameCaroAI.GUI
 {
@@ -32,7 +33,54 @@ namespace GameCaroAI.GUI
         /// the contents of this method with the code editor.
         /// </summary>
         /// 
-
+        public void StartCountdown(int seconds)
+        {
+            timer_Lose.Stop();
+            timeLeft = seconds;
+            UpdateLabelTime();
+            timer_Lose.Start();
+        }
+        public void timer_Lose_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                timeLeft--;
+                UpdateLabelTime();
+            }
+            else
+            {
+                timer_Lose.Stop();
+                MessageBox.Show("Time's up!");
+            }
+        }
+        public void UpdateLabelTime()
+        {
+            int minutes = timeLeft / 60;
+            int seconds = timeLeft % 60;
+            lb_timer.Text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+        public void DrawChessBoard()
+        {
+            for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)
+            {
+                for (int j = 0; j < Helpers.CHESS_BOARD_WIDTH; j++)
+                {
+                    Guna2ButtonWithPosition btn = new Guna2ButtonWithPosition()
+                    {
+                        Width = Helpers.CHESS_WIDTH,
+                        Height = Helpers.CHESS_HEIGHT,
+                        Location = new Point(j * Helpers.CHESS_WIDTH, i * Helpers.CHESS_HEIGHT),
+                        BorderThickness = 1,
+                        BackColor = Color.White,
+                        FillColor = Color.Transparent,
+                        Col = j,
+                        Row = i,
+                    };
+                    pn_ChessBoard.Controls.Add(btn);
+                    btn.Click += Btn_Click;
+                }
+            }
+        }
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();

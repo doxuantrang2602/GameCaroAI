@@ -57,7 +57,7 @@ namespace GameCaroAI.GUI
                 MessageBox.Show("Mật khẩu nhập lại không khớp. Vui lòng nhập lại!");
                 return;
             }
-            DataTable dataAcc = dtBase.ReadData("SELECT * FROM Player WHERE Username = N'" + txb_Username.Text + "'");
+            DataTable dataAcc = dtBase.ReadData("select * from Player where Username = N'" + txb_Username.Text + "'");
             if (dataAcc.Rows.Count > 0)
             {
                 MessageBox.Show("Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác!");
@@ -65,7 +65,7 @@ namespace GameCaroAI.GUI
             }
             string newPlayerID = dtBase.GeneratePlayerID();
             string hashedPassword = HashPassword(txb_Password.Text);
-            string sqlInsert = "INSERT INTO Player (PlayerID, Username, Password, CreateAt) VALUES (@PlayerID, @Username, @Password, GETDATE())";
+            string sqlInsert = "Insert into Player (PlayerID, Username, Password, CreateAt) values (@PlayerID, @Username, @Password, getdate())";
             Dictionary<string, object> parameters = new Dictionary<string, object>()
             {
                 {"@PlayerID", newPlayerID},

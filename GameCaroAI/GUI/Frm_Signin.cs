@@ -63,6 +63,7 @@ namespace GameCaroAI.GUI
             DataTable dt = dtBase.SearchData("Exec CheckLogin @Username, @Password", param);
             if (dt.Rows.Count > 0)
             {
+                PlayerInfo.Username = userName;             
                 MessageBox.Show("Đăng nhập thành công !");
                 this.Hide();
                 Frm_Main frmMain = new Frm_Main();
@@ -116,3 +117,4 @@ namespace GameCaroAI.GUI
         }
     }
 }
+
