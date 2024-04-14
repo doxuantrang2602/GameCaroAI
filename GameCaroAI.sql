@@ -53,4 +53,4 @@ go
 
 select count(PlayerID) as WinCount
 from Game
-where PlayerID = N'TK001' and Result = N'Lose'
+where PlayerID = N'TK001' and Result = N'Win'

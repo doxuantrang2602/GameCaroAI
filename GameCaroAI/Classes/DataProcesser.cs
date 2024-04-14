@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameCaroAI.Classes
 {
-    internal class DataProcesserTrang
+    internal class DataProcesser
     {
         string connectStr = "Data Source=DESKTOP-SVVHT2F\\SQLEXPRESS;Initial Catalog=GameCaroAI;Integrated Security=True";
         SqlConnection sqlConn = null;

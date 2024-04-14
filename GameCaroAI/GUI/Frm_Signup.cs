@@ -15,7 +15,7 @@ namespace GameCaroAI.GUI
 {
     public partial class Frm_Signup : Form
     {
-        DataProcesserTrang dtBase = new DataProcesserTrang();
+        DataProcesser dtBase = new DataProcesser();
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;

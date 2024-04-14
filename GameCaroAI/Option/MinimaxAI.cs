@@ -52,7 +52,7 @@ namespace GameCaroAI.Option
         {
             if (depth == maxDepth || IsGameOver(board))
             {
-                return Evaluate(board, "O");
+                return Evaluate(board, AI_PIECE);
             }
             if (isMaximizing)
             {
@@ -63,7 +63,7 @@ namespace GameCaroAI.Option
                     {
                         if (board[i, j] == null)
                         {
-                            board[i, j] = "O";
+                            board[i, j] = AI_PIECE;
                             int score = Minimax(board, depth + 1, false);
                             board[i, j] = null;
                             bestScore = Math.Max(score, bestScore);

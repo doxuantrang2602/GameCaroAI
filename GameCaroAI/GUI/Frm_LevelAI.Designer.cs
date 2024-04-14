@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_LevelAI));
             this.gr_level = new System.Windows.Forms.GroupBox();
-            this.rdb_easy = new System.Windows.Forms.RadioButton();
-            this.rdb_medium = new System.Windows.Forms.RadioButton();
-            this.rdb_hard = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_Start = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rdb_hard = new System.Windows.Forms.RadioButton();
+            this.rdb_medium = new System.Windows.Forms.RadioButton();
+            this.rdb_easy = new System.Windows.Forms.RadioButton();
             this.gr_level.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,51 +56,9 @@
             this.gr_level.TabStop = false;
             this.gr_level.Text = "Lựa chọn";
             // 
-            // rdb_easy
-            // 
-            this.rdb_easy.AutoSize = true;
-            this.rdb_easy.Location = new System.Drawing.Point(85, 90);
-            this.rdb_easy.Name = "rdb_easy";
-            this.rdb_easy.Size = new System.Drawing.Size(58, 29);
-            this.rdb_easy.TabIndex = 1;
-            this.rdb_easy.TabStop = true;
-            this.rdb_easy.Text = "Dễ";
-            this.rdb_easy.UseVisualStyleBackColor = true;
-            // 
-            // rdb_medium
-            // 
-            this.rdb_medium.AutoSize = true;
-            this.rdb_medium.Location = new System.Drawing.Point(85, 125);
-            this.rdb_medium.Name = "rdb_medium";
-            this.rdb_medium.Size = new System.Drawing.Size(129, 29);
-            this.rdb_medium.TabIndex = 2;
-            this.rdb_medium.TabStop = true;
-            this.rdb_medium.Text = "Trung Bình";
-            this.rdb_medium.UseVisualStyleBackColor = true;
-            // 
-            // rdb_hard
-            // 
-            this.rdb_hard.AutoSize = true;
-            this.rdb_hard.Location = new System.Drawing.Point(85, 160);
-            this.rdb_hard.Name = "rdb_hard";
-            this.rdb_hard.Size = new System.Drawing.Size(69, 29);
-            this.rdb_hard.TabIndex = 3;
-            this.rdb_hard.TabStop = true;
-            this.rdb_hard.Text = "Khó";
-            this.rdb_hard.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(40, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(272, 25);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Hãy chọn mức độ mong muốn";
-            // 
             // btn_Start
             // 
+            this.btn_Start.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_Start.BackColor = System.Drawing.Color.Transparent;
             this.btn_Start.BorderRadius = 20;
             this.btn_Start.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -120,6 +78,53 @@
             this.btn_Start.TabIndex = 10;
             this.btn_Start.Text = "Bắt đầu";
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(40, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(272, 25);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Hãy chọn mức độ mong muốn";
+            // 
+            // rdb_hard
+            // 
+            this.rdb_hard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdb_hard.AutoSize = true;
+            this.rdb_hard.Location = new System.Drawing.Point(85, 160);
+            this.rdb_hard.Name = "rdb_hard";
+            this.rdb_hard.Size = new System.Drawing.Size(69, 29);
+            this.rdb_hard.TabIndex = 3;
+            this.rdb_hard.TabStop = true;
+            this.rdb_hard.Text = "Khó";
+            this.rdb_hard.UseVisualStyleBackColor = true;
+            // 
+            // rdb_medium
+            // 
+            this.rdb_medium.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdb_medium.AutoSize = true;
+            this.rdb_medium.Location = new System.Drawing.Point(85, 125);
+            this.rdb_medium.Name = "rdb_medium";
+            this.rdb_medium.Size = new System.Drawing.Size(129, 29);
+            this.rdb_medium.TabIndex = 2;
+            this.rdb_medium.TabStop = true;
+            this.rdb_medium.Text = "Trung Bình";
+            this.rdb_medium.UseVisualStyleBackColor = true;
+            // 
+            // rdb_easy
+            // 
+            this.rdb_easy.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdb_easy.AutoSize = true;
+            this.rdb_easy.Location = new System.Drawing.Point(85, 90);
+            this.rdb_easy.Name = "rdb_easy";
+            this.rdb_easy.Size = new System.Drawing.Size(58, 29);
+            this.rdb_easy.TabIndex = 1;
+            this.rdb_easy.TabStop = true;
+            this.rdb_easy.Text = "Dễ";
+            this.rdb_easy.UseVisualStyleBackColor = true;
             // 
             // Frm_LevelAI
             // 

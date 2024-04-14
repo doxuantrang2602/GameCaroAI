@@ -45,7 +45,7 @@ namespace GameCaroAI.Option
             return bestMove[moveIndex];
         }
 
-        private int CalculMoveScore(int row, int col)
+        public int CalculMoveScore(int row, int col)
         {
             int cenTer = Helpers.CHESS_BOARD_HEIGHT / 2;
             int distanceToCenTer = Math.Max(Math.Abs(row - cenTer), Math.Abs(col - cenTer));
@@ -53,5 +53,4 @@ namespace GameCaroAI.Option
             return score;
         }
     }
-
 }

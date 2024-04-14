@@ -16,7 +16,7 @@ namespace GameCaroAI.GUI
 {
     public partial class FrmAI : Form
     {
-        DataProcesserTrang dtBase = new DataProcesserTrang();
+        DataProcesser dtBase = new DataProcesser();
         public int levelAI;
         public const int MAX_DEPTH = 2;
         public bool isYourTurn = true; 

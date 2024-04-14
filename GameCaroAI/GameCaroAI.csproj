@@ -72,7 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\DataProcesserTrang.cs" />
+    <Compile Include="Classes\DataProcesser.cs" />
     <Compile Include="Classes\Guna2ButtonWithPosition.cs">
       <SubType>Component</SubType>
     </Compile>
