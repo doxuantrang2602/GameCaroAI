@@ -10,16 +10,17 @@ namespace GameCaroAI.Option
 {
     public class HardOption
     {
-        public string[,] board;
-        public int maxDepth;
-        public const string AI_PIECE = "0";
-        public const string PLAYER_PIECE = "X";
+        private string[,] board;
+        private int maxDepth;
+        private const string AI_PIECE = "O";
+        private const string PLAYER_PIECE = "X";
 
         public HardOption(string[,] board, int maxDepth)
         {
             this.board = board;
             this.maxDepth = maxDepth;
         }
+
         public int[] findBestMove()
         {
             int bestScore = int.MinValue;
@@ -48,8 +49,6 @@ namespace GameCaroAI.Option
 
             return bestMove;
         }
-
-
         public int MinimaxWithAlphaBeta(string[,] board, int depth, bool isMaximizing, int alpha, int beta)
         {
             if (depth == maxDepth || IsGameOver(board))
@@ -111,7 +110,6 @@ namespace GameCaroAI.Option
                 return bestScore;
             }
         }
-
         public int Evaluate(string[,] board, string player)
         {
             int score = 0;
@@ -155,22 +153,20 @@ namespace GameCaroAI.Option
             return score;
         }
 
-        // Hàm đánh giá cho từng dãy liên tiếp
         public int EvaluateLine(string[,] board, string player, int row, int col, int dRow, int dCol)
         {
             int score = 0;
             int playerCount = 0; // Số lượng ô đã được chiếm bởi người chơi hiện tại
             int opponentCount = 0; // Số lượng ô đã được chiếm bởi đối thủ
+            string opponent = player == AI_PIECE ? PLAYER_PIECE : AI_PIECE;
 
             for (int i = 0; i < 5; i++)
             {
                 int r = row + i * dRow;
                 int c = col + i * dCol;
-
-                // Đếm số lượng ô đã được chiếm bởi người chơi và đối thủ
                 if (board[r, c] == player)
                     playerCount++;
-                else if (board[r, c] != null)
+                else if (board[r, c] == opponent)
                     opponentCount++;
             }
 
@@ -178,9 +174,9 @@ namespace GameCaroAI.Option
             if (playerCount == 5)
                 score += 1000000;
             else if (playerCount == 4 && opponentCount == 0)
-                score += 10000;
+                score += 10000; // 
             else if (playerCount == 3 && opponentCount == 0)
-                score += 1000;
+                score += 5000;
             else if (playerCount == 2 && opponentCount == 0)
                 score += 100;
             else if (playerCount == 1 && opponentCount == 0)
@@ -188,17 +184,25 @@ namespace GameCaroAI.Option
 
             // Ngăn chặn đối thủ
             if (opponentCount == 4 && playerCount == 0)
-                score -= 10000;
+                score -= 50000;  
             else if (opponentCount == 3 && playerCount == 0)
-                score -= 1000;
+                score -= 15000; 
             else if (opponentCount == 2 && playerCount == 0)
-                score -= 100;
+                score -= 200;
             else if (opponentCount == 1 && playerCount == 0)
                 score -= 10;
 
-            return score;
-        }      
+            if (opponentCount == 4 && playerCount == 1)
+                score -= 10000;
+            else if (opponentCount == 3 && playerCount == 1)
+                score -= 1000;
+            else if (opponentCount == 2 && playerCount == 1)
+                score -= 50;
+            else if (opponentCount == 1 && playerCount == 1)
+                score -= 5;
 
+            return score;
+        }
         public bool IsGameOver(string[,] board)
         {
             // Cờ hòa
@@ -209,6 +213,7 @@ namespace GameCaroAI.Option
                     if (board[i, j] == null)
                     {
                         return true;
+
                     }
                 }
             }

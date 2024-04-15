@@ -18,7 +18,7 @@ namespace GameCaroAI.GUI
     {
         DataProcesser dtBase = new DataProcesser();
         public int levelAI;
-        public const int MAX_DEPTH = 3;
+        public const int MAX_DEPTH = 5;
         public bool isYourTurn = true; 
         public bool isComputerTurn = true;
         public int xFirstMoveRow;
@@ -26,7 +26,6 @@ namespace GameCaroAI.GUI
         public int xCount = 0;
         public int comCount = 0;
         public string[,] board = new string[Helpers.CHESS_BOARD_HEIGHT, Helpers.CHESS_BOARD_WIDTH];
-        public const int WIN_SCORE = -10000000;
         public int timeLeft;
         public Stack<Move> undoStack = new Stack<Move>();
         public Stack<Move> redoStack = new Stack<Move>();
@@ -296,10 +295,9 @@ namespace GameCaroAI.GUI
 
                     isYourTurn = true;
                     isComputerTurn = false;
-                    StartCountdown(60);
                 }
             }
-            //MessageBox.Show("!");
+            StartCountdown(60);
         }
       
         public bool CheckWinner(int row, int col)

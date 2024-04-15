@@ -20,7 +20,6 @@ namespace GameCaroAI.Option
             this.board = board;
             this.maxDepth = maxDepth;
         }
-
         public int[] findBestMove()
         {
             int bestScore = int.MinValue;
@@ -153,27 +152,22 @@ namespace GameCaroAI.Option
             }
 
             // Đánh giá trường hợp chiến thắng
-            if (playerCount == 5)
+            if (playerCount == 5 & opponentCount == 0)
+            {
                 score += 1000000;
-            else if (playerCount == 4 && opponentCount == 0)
+            } else if(playerCount == 4 & opponentCount == 0)
+            {
                 score += 10000;
-            else if (playerCount == 3 && opponentCount == 0)
+            } else if(playerCount == 3 & opponentCount == 0)
+            {
                 score += 1000;
-            else if (playerCount == 2 && opponentCount == 0)
+            } else if (playerCount == 2 & opponentCount == 0)
+            {
                 score += 100;
-            else if (playerCount == 1 && opponentCount == 0)
+            } else if(playerCount == 1 && opponentCount == 0)
+            {
                 score += 10;
-
-            // Ngăn chặn đối thủ
-            if (opponentCount == 4 && playerCount == 0)
-                score -= 15000;  // Tăng điểm trừ khi đối thủ có 4 quân liền nhau không bị chặn
-            else if (opponentCount == 3 && playerCount == 0)
-                score -= 5000;  // Tăng điểm trừ mạnh mẽ cho 3 quân liền nhau không bị chặn
-            else if (opponentCount == 2 && playerCount == 0)
-                score -= 200;
-            else if (opponentCount == 1 && playerCount == 0)
-                score -= 10;
-
+            }
             return score;
         }
         public bool IsGameOver(string[,] board)
