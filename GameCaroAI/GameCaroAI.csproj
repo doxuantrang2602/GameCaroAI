@@ -195,6 +195,8 @@
     <Content Include="bin\Debug\GameCaroAI.pdb" />
     <Content Include="bin\Debug\Guna.UI2.dll" />
     <Content Include="Resources\timer.png" />
+    <None Include="Resources\wooden1.png" />
+    <None Include="Resources\wooden.png" />
     <None Include="Resources\Khungad2.png" />
     <None Include="Resources\Khungad1.png" />
     <None Include="Resources\Khungad.png" />

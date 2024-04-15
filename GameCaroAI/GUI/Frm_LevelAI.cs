@@ -33,5 +33,11 @@ namespace GameCaroAI.GUI
             frmAI.ShowDialog();
             this.Close();
         }
-    }
+
+
+		private void ptb_Exit_Click(object sender, EventArgs e)
+		{
+            this.Close();
+		}
+	}
 }
