@@ -174,32 +174,57 @@ namespace GameCaroAI.Option
             if (playerCount == 5)
                 score += 1000000;
             else if (playerCount == 4 && opponentCount == 0)
-                score += 10000; // 
+            {
+                if (opponentCount == 1 && playerCount == 4)
+                    score += 25000;
+                else
+                    score += 40000; 
+            }
             else if (playerCount == 3 && opponentCount == 0)
-                score += 5000;
+            {
+
+                if (opponentCount == 1 && playerCount == 3)
+                    score += 1000;
+                else
+                    score += 2000;
+            }
             else if (playerCount == 2 && opponentCount == 0)
-                score += 100;
+            {
+                if (opponentCount == 1 && playerCount == 2)
+                    score += 100;
+                else
+                    score += 100;
+            }
             else if (playerCount == 1 && opponentCount == 0)
+            {
                 score += 10;
+            }
 
             // Ngăn chặn đối thủ
             if (opponentCount == 4 && playerCount == 0)
-                score -= 50000;  
+            {
+                if (opponentCount == 4 && playerCount == 1)
+                    score -= 100000;
+                else
+                    score -= 100000;
+            }
             else if (opponentCount == 3 && playerCount == 0)
-                score -= 15000; 
+            {
+                if (opponentCount == 3 && playerCount == 1)
+                    score -= 5000;
+                else
+                    score -= 10000;
+            }
             else if (opponentCount == 2 && playerCount == 0)
-                score -= 200;
+            {
+                if (opponentCount == 2 && playerCount == 1)
+                    score -= 100;
+                else
+                    score -= 200;
+
+            }
             else if (opponentCount == 1 && playerCount == 0)
                 score -= 10;
-
-            if (opponentCount == 4 && playerCount == 1)
-                score -= 10000;
-            else if (opponentCount == 3 && playerCount == 1)
-                score -= 1000;
-            else if (opponentCount == 2 && playerCount == 1)
-                score -= 50;
-            else if (opponentCount == 1 && playerCount == 1)
-                score -= 5;
 
             return score;
         }
@@ -213,7 +238,6 @@ namespace GameCaroAI.Option
                     if (board[i, j] == null)
                     {
                         return true;
-
                     }
                 }
             }
