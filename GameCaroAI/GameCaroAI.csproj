@@ -115,9 +115,9 @@
     <Compile Include="GUI\Frm_TwoPlayers.Designer.cs">
       <DependentUpon>Frm_TwoPlayers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Option\AlphaBetaAI.cs" />
-    <Compile Include="Option\MinimaxAI.cs" />
-    <Compile Include="Option\RandomAI.cs" />
+    <Compile Include="Option\HardOption.cs" />
+    <Compile Include="Option\MediumOption.cs" />
+    <Compile Include="Option\EasyOption.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\FrmAI.resx">

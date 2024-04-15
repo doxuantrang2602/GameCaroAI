@@ -7,11 +7,11 @@ using GameCaroAI.Classes;
 
 namespace GameCaroAI.Option
 {
-    public class RandomAI
+    public class EasyOption
     {
         private string[,] board;
         private Random random;
-        public RandomAI(string[,] board)
+        public EasyOption(string[,] board)
         {
             this.board = board;
             this.random = new Random();

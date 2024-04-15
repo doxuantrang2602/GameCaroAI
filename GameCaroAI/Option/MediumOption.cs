@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace GameCaroAI.Option
 {
-    public class MinimaxAI
+    public class MediumOption
     {
         private string[,] board;
         private int maxDepth;
         private const string AI_PIECE = "O";
         private const string PLAYER_PIECE = "X";
 
-        public MinimaxAI(string[,] board, int maxDepth)
+        public MediumOption(string[,] board, int maxDepth)
         {
             this.board = board;
             this.maxDepth = maxDepth;
@@ -166,17 +166,17 @@ namespace GameCaroAI.Option
 
             // Ngăn chặn đối thủ
             if (opponentCount == 4 && playerCount == 0)
-                score -= 10000;
+                score -= 15000;  // Tăng điểm trừ khi đối thủ có 4 quân liền nhau không bị chặn
             else if (opponentCount == 3 && playerCount == 0)
-                score -= 1000;
+                score -= 5000;  // Tăng điểm trừ mạnh mẽ cho 3 quân liền nhau không bị chặn
             else if (opponentCount == 2 && playerCount == 0)
-                score -= 100;
+                score -= 200;
             else if (opponentCount == 1 && playerCount == 0)
                 score -= 10;
 
             return score;
         }
-        private bool IsGameOver(string[,] board)
+        public bool IsGameOver(string[,] board)
         {
             // Cờ hòa
             for (int i = 0; i < Helpers.CHESS_BOARD_HEIGHT; i++)

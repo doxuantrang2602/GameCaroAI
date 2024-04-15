@@ -18,7 +18,7 @@ namespace GameCaroAI.GUI
     {
         DataProcesser dtBase = new DataProcesser();
         public int levelAI;
-        public const int MAX_DEPTH = 2;
+        public const int MAX_DEPTH = 3;
         public bool isYourTurn = true; 
         public bool isComputerTurn = true;
         public int xFirstMoveRow;
@@ -30,9 +30,9 @@ namespace GameCaroAI.GUI
         public int timeLeft;
         public Stack<Move> undoStack = new Stack<Move>();
         public Stack<Move> redoStack = new Stack<Move>();
-        public RandomAI randomAI;
-        public MinimaxAI minimaxAI;
-        public AlphaBetaAI alphaBetaAI;
+        public EasyOption easyOption;
+        public MediumOption mediumOption;
+        public HardOption hardOption;
         public string playerID = "";
         public FrmAI(int level)
         {
@@ -56,15 +56,18 @@ namespace GameCaroAI.GUI
         {
             if (level == 0)
             {
-                randomAI = new RandomAI(board);
+                easyOption = new EasyOption(board);
+                lbl_level.Text = "Mức độ: Dễ";
             }
             else if (level == 1) 
             {
-                minimaxAI = new MinimaxAI(board, MAX_DEPTH);
+                mediumOption = new MediumOption(board, MAX_DEPTH);
+                lbl_level.Text = "Mức độ: Trung Bình";
             }
             else if (level == 2)
             {
-                alphaBetaAI = new AlphaBetaAI(board, MAX_DEPTH);
+                hardOption = new HardOption(board, MAX_DEPTH);
+                lbl_level.Text = "Mức độ: Khó";
             }
         }
         public void WinLoseCount()
@@ -131,7 +134,7 @@ namespace GameCaroAI.GUI
                     btn.BackgroundImageLayout = ImageLayout.Stretch;
                     board[row, col] = "X";
                     xCount++;
-                    lbl_You.Text ="X (You)" + xCount.ToString();
+                    lbl_You.Text ="X (You): " + xCount.ToString();
                     if (CheckWinner(row, col))
                     {
                         MessageBox.Show("YOU WINS!");
@@ -233,7 +236,7 @@ namespace GameCaroAI.GUI
                 {
                     if (levelAI == 0)
                     {
-                        int[] move = randomAI.findMove();
+                        int[] move = easyOption.findMove();
                         int row, col;
                         do
                         {
@@ -244,7 +247,7 @@ namespace GameCaroAI.GUI
                     }
                     else if(levelAI == 1)
                     {
-                        int[] move = minimaxAI.findBestMove();
+                        int[] move = mediumOption.findBestMove();
                         int row, col;
                         do
                         {
@@ -256,7 +259,7 @@ namespace GameCaroAI.GUI
                     }   
                     else if (levelAI == 2)
                     {
-                        int[] move = alphaBetaAI.findBestMove();
+                        int[] move = hardOption.findBestMove();
                         int row, col;
                         do
                         {
@@ -267,7 +270,6 @@ namespace GameCaroAI.GUI
                         UpdateBoard(row, col);
                     }
                 }
-                StartCountdown(60);
             }
         }
 
@@ -294,10 +296,10 @@ namespace GameCaroAI.GUI
 
                     isYourTurn = true;
                     isComputerTurn = false;
-                    return;
+                    StartCountdown(60);
                 }
             }
-            MessageBox.Show("!");
+            //MessageBox.Show("!");
         }
       
         public bool CheckWinner(int row, int col)
@@ -405,14 +407,14 @@ namespace GameCaroAI.GUI
                     Move lastMove = undoStack.Pop();
                     redoStack.Push(new Move(lastMove.Row, lastMove.Col, board[lastMove.Row, lastMove.Col])); // Đẩy vào redoStack
                     board[lastMove.Row, lastMove.Col] = null; // Xóa nước đi khỏi bàn cờ
-                    UpdateButtonUI(lastMove.Row, lastMove.Col, null); // Cập nhật UI của nút
+                    UpdateButtonUI(lastMove.Row, lastMove.Col, null); 
                 }
                 isYourTurn = true;
                 isComputerTurn = false;
             }
             else
             {
-                MessageBox.Show("Không thể thực hiện undo!");
+                MessageBox.Show("Không thể thực hiện Undo!");
             }
         }
         private void btn_Redo_Click(object sender, EventArgs e)
