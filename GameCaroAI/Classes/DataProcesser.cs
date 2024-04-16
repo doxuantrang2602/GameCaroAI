@@ -10,7 +10,7 @@ namespace GameCaroAI.Classes
 {
     internal class DataProcesser
     {
-        string connectStr = "Data Source=DESKTOP-HKTU0QF\\SQLEXPRESS;Initial Catalog=GameCaroAI;Integrated Security=True";
+        string connectStr = "Data Source=DESKTOP-SVVHT2F\\SQLEXPRESS;Initial Catalog=GameCaroAI;Integrated Security=True";
         SqlConnection sqlConn = null;
 
         public void OpenConnect()

@@ -197,13 +197,6 @@ namespace GameCaroAI.GUI
                         row = xFirstMoveRow + 1;
                         col = xFirstMoveCol + 1;
                     }
-                    // Biên dưới cùng bàn cờ
-                    else if (xFirstMoveRow == Helpers.CHESS_BOARD_HEIGHT - 1)
-                    {
-                        // Đánh vào góc trên bên trái
-                        row = xFirstMoveRow - 1;
-                        col = xFirstMoveCol - 1;
-                    }
                     // Biên bên trái của bàn cờ
                     else if (xFirstMoveCol == 0)
                     {
@@ -213,6 +206,13 @@ namespace GameCaroAI.GUI
                     }
                     // Biên bên phải bàn cờ
                     else if (xFirstMoveCol == Helpers.CHESS_BOARD_WIDTH - 1)
+                    {
+                        // Đánh vào góc trên bên trái
+                        row = xFirstMoveRow - 1;
+                        col = xFirstMoveCol - 1;
+                    }
+                    // Biên dưới cùng bàn cờ
+                    else if (xFirstMoveRow == Helpers.CHESS_BOARD_HEIGHT - 1)
                     {
                         // Đánh vào góc trên bên trái
                         row = xFirstMoveRow - 1;
@@ -353,7 +353,7 @@ namespace GameCaroAI.GUI
             }
             
             // Kiểm tra đường chéo phụ
-            for(int i = -4; i <= 0; i++)
+            for(int i = -4; i < 1; i++)
             {
                 bool win = true;
                 for (int j = 0; j < 5; j++)
@@ -361,7 +361,7 @@ namespace GameCaroAI.GUI
                     int checkRow = row + i + j;
                     int checkCol = col - i - j;
                     if (checkRow < 0 || checkRow >= Helpers.CHESS_BOARD_HEIGHT ||
-                        checkRow < 0 || checkCol >= Helpers.CHESS_BOARD_WIDTH ||
+                        checkCol < 0 || checkCol >= Helpers.CHESS_BOARD_WIDTH ||
                         board[checkRow, checkCol] != player)
                     {
                         win = false;

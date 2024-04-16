@@ -12,11 +12,13 @@ namespace GameCaroAI.GUI
 {
     public partial class Frm_LevelAI : Form
     {
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
         public Frm_LevelAI()
         {
             InitializeComponent();
         }
-
         private void btn_Start_Click(object sender, EventArgs e)
         {
             int level;
@@ -33,11 +35,27 @@ namespace GameCaroAI.GUI
             frmAI.ShowDialog();
             this.Close();
         }
-
-
 		private void ptb_Exit_Click(object sender, EventArgs e)
 		{
             this.Close();
 		}
-	}
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point diff = Point.Subtract(Cursor.Position, new System.Drawing.Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new System.Drawing.Size(diff));
+            }
+        }
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+    }
 }
