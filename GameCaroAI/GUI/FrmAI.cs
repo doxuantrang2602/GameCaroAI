@@ -36,7 +36,7 @@ namespace GameCaroAI.GUI
         public FrmAI(int level)
         {
             InitializeComponent();
-            DrawChessBoard();
+            DrawCaroBoard();
             levelAI = level;
             InitializeAI(levelAI);
             string sqlPlayer = "select PlayerID from Player where Username = @Username";
@@ -49,6 +49,7 @@ namespace GameCaroAI.GUI
             {
                 playerID = dtPlayer.Rows[0]["PlayerID"].ToString(); ;
             }
+            this.lb_player.Text = "Người chơi: "+PlayerInfo.Username;
             WinLoseCount();
         }
         private void InitializeAI(int level)
@@ -294,7 +295,7 @@ namespace GameCaroAI.GUI
                     redoStack.Clear();
 
                     isYourTurn = true;
-                    isComputerTurn = false;
+                    isComputerTurn = false; 
                 }
             }
             StartCountdown(60);
@@ -375,6 +376,7 @@ namespace GameCaroAI.GUI
             
         private void btn_newGame_Click(object sender, EventArgs e)
         {
+            timer_Lose.Stop();
             this.Hide();
             FrmAI frmAI = new FrmAI(levelAI);
             frmAI.ShowDialog();
@@ -382,19 +384,8 @@ namespace GameCaroAI.GUI
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
+            timer_Lose.Stop();
             this.Close();
-        }
-
-        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FrmAI frmAI = new FrmAI(levelAI);
-            frmAI.ShowDialog();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
         }
         private void btn_Undo_Click(object sender, EventArgs e)
         {
